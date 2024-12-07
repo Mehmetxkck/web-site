@@ -3,6 +3,16 @@ body {
     font-family: Arial, sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #b7551d;
+}
+
 .nav-bar ul li {
     font-family: Georgia, serif;
 }
@@ -25,151 +35,66 @@ body {
 }
 
 /* Menü Butonu */
-.menu-button {
-    display: none;
-    position: absolute;
-    top: 100px;
-    /* Logo altına yerleştirme */
-    left: 20px;
+.menu-btn {
     background-color: #8a3c10;
-    /* Ana renk */
     color: white;
     border: none;
-    padding: 12px 18px;
-    font-size: 1.5rem;
+    padding: 10px 15px;
+    font-size: 1rem;
     border-radius: 5px;
-    /* Yumuşak köşeler */
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Hafif gölgelendirme */
+    transition: background-color 0.3s ease;
+    display: block;
+    /* Menü butonu her boyutta görünsün */
 }
 
-/* Hover Efekti */
-.menu-button:hover {
+.menu-btn:hover {
     background-color: #b7551d;
-    /* Hoverda renk değişimi */
-    transform: scale(1.05);
-    /* Hafifçe büyüme */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    /* Gölgeleme daha belirgin */
 }
 
 /* Menü butonunun aktif durumdaki tasarımı */
-.menu-button:active {
+.menu-btn:active {
     transform: scale(1.02);
-    /* Çok fazla büyüme olmadan biraz küçülme */
 }
 
 /* Menüyü Küçük Ekranlarda Gösterme */
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
     .menu-button {
         display: block;
-    }
-
-    .nav-bar {
-        display: none;
-        /* Hide navigation bar by default */
-    }
-
-    .nav-bar.active {
-        display: flex;
-        /* Show navigation bar when active */
+        /* Menü tuşu her boyutta görünsün */
     }
 }
 
-/* Search Bar Styling */
-.search-bar {
-    display: flex;
-    flex: 1;
-    max-width: 600px;
-    margin: 0 20px;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
-}
-
-.search-bar button {
-    padding: 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-left: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-}
-
-.search-bar button i {
-    color: #333;
-}
-
-/* Header Icons Styling */
-.header-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.header-icons .icon {
-    text-align: center;
-    font-size: 12px;
-    color: #333;
-}
-
-.header-icons .icon i {
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-/* Navigation Styling */
 .nav-bar {
-    background-color: #fff;
-    padding: 10px 20px;
-    text-align: center;
+    display: none;
+    /* Mobilde açılır hale getir */
 }
 
-.nav-bar ul {
+.nav-bar.active {
     display: flex;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    justify-content: center;
+    flex-direction: column;
+    background-color: #8a3c10;
+    padding: 10px;
 }
 
-.nav-bar li {
-    font-size: 14px;
-}
-
-.nav-bar a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-.nav-bar a:hover {
-    color: #5c4033;
-}
 
 /* Sidebar Menu */
 .sidebar {
     position: fixed;
     top: 0;
-    left: -550px; /* Başlangıçta gizli */
+    left: -100%;
     width: 250px;
     height: 100%;
     background-color: #8a3c10;
     color: white;
-    transition: left 0.3s ease; /* Yumuşak geçiş efekti */
+    transition: left 0.3s ease;
     padding: 20px;
     z-index: 1000;
 }
 
 .sidebar.active {
-    left: 0; /* Sidebar aktif olduğunda görünür olur */
+    left: 0;
 }
 
 /* Close Button */
@@ -181,7 +106,6 @@ body {
     cursor: pointer;
     margin-bottom: 20px;
 }
-
 
 .sidebar ul {
     list-style: none;
@@ -199,6 +123,112 @@ body {
 
 .sidebar ul li a:hover {
     color: #b7551d;
+}
+
+/* Search Bar Styling */
+.search-bar {
+    display: flex;
+    flex: 1;
+    max-width: 400px;
+    margin: 0 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-bar button {
+    padding: 10px;
+    background-color: #8a3c10;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-bar button i {
+    color: white;
+}
+
+/* Header Icons Styling */
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-icons a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #8a3c10;
+    font-weight: bold;
+    border: 2px solid #8a3c10;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header-icons a:hover {
+    background-color: #8a3c10;
+    color: white;
+}
+
+.header-icons .menu-btn {
+    display: block;
+    /* Menü tuşu her boyutta görünsün */
+}
+
+.header-icons .icon {
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+}
+
+.header-icons .icon i {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.nav-bar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-bar ul li {
+    margin: 0;
+}
+
+.nav-bar ul li a {
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.nav-bar ul li a:hover {
+    background-color: #b7551d;
+}
+
+
+.nav-bar li {
+    font-size: 14px;
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.nav-bar a:hover {
+    color: #5c4033;
 }
 
 /* Hero Section */
@@ -539,4 +569,142 @@ footer {
     .sidebar {
         width: 100%;
     }
+}
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Sepetim Bölümü Stil */
+#cart {
+    padding: 2rem 1rem;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#cart h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #8a3c10;
+}
+
+#cart-items {
+    margin-bottom: 2rem;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.cart-item .item-info {
+    display: flex;
+    gap: 15px;
+    flex: 1;
+    text-align: left;
+}
+
+.cart-item .item-info img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.cart-item .item-details {
+    flex: 1;
+    text-align: left;
+}
+
+.cart-item .item-details h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.cart-item .item-details p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.cart-item .item-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-item .item-actions button {
+    background-color: #8a3c10;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-item .item-actions button:hover {
+    background-color: #b7551d;
+}
+
+.coupon-section {
+    margin: 20px 0;
+}
+
+.coupon-section input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.coupon-section button {
+    padding: 10px 15px;
+    background-color: #8a3c10;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.coupon-section button:hover {
+    background-color: #b7551d;
+}
+
+#cart-summary h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+#checkout-btn {
+    background-color: #8a3c10;
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#checkout-btn:hover {
+    background-color: #b7551d;
 }
