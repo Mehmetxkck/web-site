@@ -6,153 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sepetim</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        /* Sepetim Bölümü Stil */
-        #cart {
-            padding: 2rem 1rem;
-            background-color: #f9f9f9;
-            text-align: center;
-        }
-
-        #cart h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #8a3c10;
-        }
-
-        #cart-items {
-            margin-bottom: 2rem;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #fff;
-        }
-
-        .cart-item .item-info {
-            display: flex;
-            gap: 15px;
-            flex: 1;
-            text-align: left;
-        }
-
-        .cart-item .item-info img {
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .cart-item .item-details {
-            flex: 1;
-            text-align: left;
-        }
-
-        .cart-item .item-details h4 {
-            font-size: 1rem;
-            font-weight: bold;
-            margin: 0;
-            color: #333;
-        }
-
-        .cart-item .item-details p {
-            margin: 5px 0;
-            color: #666;
-        }
-
-        .cart-item .item-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .cart-item .item-actions button {
-            background-color: #8a3c10;
-            border: 1px solid #ccc;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .cart-item .item-actions button:hover {
-            background-color: #b7551d;
-        }
-
-        .coupon-section {
-            margin: 20px 0;
-        }
-
-        .coupon-section input {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 200px;
-            margin-right: 10px;
-        }
-
-        .coupon-section button {
-            padding: 10px 15px;
-            background-color: #8a3c10;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .coupon-section button:hover {
-            background-color: #b7551d;
-        }
-
-        #cart-summary h3 {
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-
-        #checkout-btn {
-            background-color: #8a3c10;
-            color: white;
-            padding: 1rem 2rem;
-            font-size: 1.5rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        #checkout-btn:hover {
-            background-color: #b7551d;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
 </head>
 
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container header-container">
-            <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
                     <img src="images/logo.png" alt="Erciyes Kuruyemiş">
@@ -165,10 +26,22 @@
                 <button id="search-btn"><i class="fas fa-search"></i></button>
             </div>
 
-            <!-- Hesabım ve Sepetim -->
+            <!-- Header İkonları (Hesabım, Sepetim, Menü) -->
             <div class="header-icons">
-                <a href="account.html" class="account-link"><i class="fas fa-user"></i><span>Hesabım</span></a>
-                <a href="cart.html" class="cart-link"><i class="fas fa-shopping-cart"></i><span>Sepetim</span></a>
+                <a href="account.html" class="header-icon">
+                    <i class="fas fa-user"></i>
+                    <span>Hesabım</span>
+                </a>
+                <a href="cart.html" class="header-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Sepetim</span>
+                </a>
+                <!-- Menü Butonu -->
+                <div class="header-icon menu-btn" id="menu-btn">
+                    <i class="fas fa-bars"></i>
+                    <span> Menü</span>
+                </div>
+
             </div>
         </div>
     </header>
