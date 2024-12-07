@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepetim</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Sepetim Bölümü Stil */
+        #cart {
+            padding: 2rem 1rem;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        #cart h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #8a3c10;
+        }
+
+        #cart-items {
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        .cart-item .item-info {
+            display: flex;
+            gap: 15px;
+            flex: 1;
+            text-align: left;
+        }
+
+        .cart-item .item-info img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .cart-item .item-details {
+            flex: 1;
+            text-align: left;
+        }
+
+        .cart-item .item-details h4 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 0;
+            color: #333;
+        }
+
+        .cart-item .item-details p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .cart-item .item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-item .item-actions button {
+            background-color: #8a3c10;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-item .item-actions button:hover {
+            background-color: #b7551d;
+        }
+
+        .coupon-section {
+            margin: 20px 0;
+        }
+
+        .coupon-section input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            margin-right: 10px;
+        }
+
+        .coupon-section button {
+            padding: 10px 15px;
+            background-color: #8a3c10;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .coupon-section button:hover {
+            background-color: #b7551d;
+        }
+
+        #cart-summary h3 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        #checkout-btn {
+            background-color: #8a3c10;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #checkout-btn:hover {
+            background-color: #b7551d;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Erciyes Kuruyemiş">
+                </a>
+            </div>
+
+            <!-- Arama Çubuğu -->
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Aradığınız ürün, kategori veya markayı yazınız.">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+
+            <!-- Hesabım ve Sepetim -->
+            <div class="header-icons">
+                <a href="account.html" class="account-link"><i class="fas fa-user"></i><span>Hesabım</span></a>
+                <a href="cart.html" class="cart-link"><i class="fas fa-shopping-cart"></i><span>Sepetim</span></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sepet -->
+    <section id="cart">
+        <div class="container">
+            <h2>Sepetim</h2>
+            <div id="cart-items">
+                <!-- Dinamik olarak eklenecek -->
+            </div>
+            <div class="coupon-section">
+                <input type="text" id="coupon-code" placeholder="Kupon Kodu">
+                <button onclick="applyCoupon()">Kupon Uygula</button>
+            </div>
+            <div id="cart-summary">
+                <h3 id="product-total">Ürün Toplamı: 0 TL</h3>
+                <h3 id="shipping-cost">Kargo Ücreti: 0 TL</h3>
+                <h3 id="final-total">Toplam: 0 TL</h3>
+            </div>
+            <button id="checkout-btn">Ödemeye Git</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Erciyes Kuruyemiş. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        // Sepet dizisi: LocalStorage'dan yüklenir veya boş başlatılır
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Sepet render etme
+        function renderCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const productTotalElement = document.getElementById('product-total');
+            const shippingCostElement = document.getElementById('shipping-cost');
+            const finalTotalElement = document.getElementById('final-total');
+
+            // Sepeti sıfırla
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Sepetiniz boş.</p>';
+                productTotalElement.textContent = 'Ürün Toplamı: 0 TL';
+                shippingCostElement.textContent = 'Kargo Ücreti: 0 TL';
+                finalTotalElement.textContent = 'Toplam: 0 TL';
+                return;
+            }
+
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+            <div class="item-info">
+                <img src="${item.image}" alt="${item.name}" class="item-image" />
+                <div class="item-details">
+                    <h4>${item.name}</h4>
+                    <p>${item.weight} gr</p>
+                    <p>Fiyat: ${item.price.toFixed(2)} TL</p>
+                    <p>Toplam: ${itemTotal.toFixed(2)} TL</p>
+                </div>
+            </div>
+            <div class="item-actions">
+                <button class="decrease-btn" data-index="${index}">-</button>
+                <span class="quantity">${item.quantity}</span>
+                <button class="increase-btn" data-index="${index}">+</button>
+                <button class="remove-btn" data-index="${index}">Kaldır</button>
+            </div>
+        `;
+
+                cartItemsContainer.appendChild(itemElement);
+            });
+
+            // Kargo ücreti hesaplama
+            const shippingCost = total < 750 && total > 0 ? 90 : 0;
+            const finalTotal = total + shippingCost;
+
+            // Toplamları güncelle
+            productTotalElement.textContent = `Ürün Toplamı: ${total.toFixed(2)} TL`;
+            shippingCostElement.textContent = `Kargo Ücreti: ${shippingCost > 0 ? `${shippingCost} TL` : "Ücretsiz"}`;
+            finalTotalElement.textContent = `Toplam: ${finalTotal.toFixed(2)} TL`;
+        }
+
+        // Ürün ekleme
+        function addToCart(image, name, weight, price) {
+            // Sepette aynı ürün varsa miktar artır
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                // Yeni ürün ekle
+                cart.push({ image, name, weight, price, quantity: 1 });
+            }
+
+            updateCart();
+        }
+
+        // Ürün kaldırma
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Ürün miktarını artırma
+        function increaseQuantity(index) {
+            cart[index].quantity += 1;
+            updateCart();
+        }
+
+        // Ürün miktarını azaltma
+        function decreaseQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+                updateCart();
+            } else {
+                removeItem(index);
+            }
+        }
+
+        // Sepeti güncelle ve kaydet
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // Sayfa yüklendiğinde sepeti render et
+        renderCart();
+
+        // Sepet içindeki butonlara tıklama işlemleri
+        document.getElementById('cart-items').addEventListener('click', function (event) {
+            const index = event.target.getAttribute('data-index');
+            if (event.target.classList.contains('remove-btn')) {
+                removeItem(index);
+            } else if (event.target.classList.contains('increase-btn')) {
+                increaseQuantity(index);
+            } else if (event.target.classList.contains('decrease-btn')) {
+                decreaseQuantity(index);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

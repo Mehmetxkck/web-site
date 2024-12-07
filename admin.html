@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <!-- Admin Panel Header -->
+    <header class="admin-header">
+        <h1>Admin Paneli</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('products')">Ürünler</a></li>
+                <li><a href="#" onclick="showSection('coupons')">Kuponlar</a></li>
+                <li><a href="#" onclick="showSection('orders')">Siparişler</a></li>
+                <li><a href="#" onclick="showSection('users')">Kullanıcılar</a></li>
+                <li><a href="logout.html">Çıkış</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Admin Panel İçerik -->
+    <main>
+        <!-- Ürün Yönetimi -->
+        <section id="products" class="section">
+            <h2>Ürün Yönetimi</h2>
+            <button onclick="showAddProductForm()">Yeni Ürün Ekle</button>
+            <div id="product-list">
+                <!-- Ürünler Dinamik Olarak Eklenecek -->
+            </div>
+            <div id="add-product-form" class="hidden">
+                <h3>Yeni Ürün Ekle</h3>
+                <input type="text" id="product-name" placeholder="Ürün Adı">
+                <input type="number" id="product-price" placeholder="Fiyat">
+                <input type="number" id="product-stock" placeholder="Stok">
+                <button onclick="addProduct()">Ürünü Kaydet</button>
+            </div>
+        </section>
+
+        <!-- Kupon Yönetimi -->
+        <section id="coupons" class="section hidden">
+            <h2>Kupon Yönetimi</h2>
+            <button onclick="showAddCouponForm()">Yeni Kupon Oluştur</button>
+            <div id="coupon-list">
+                <!-- Kuponlar Dinamik Olarak Eklenecek -->
+            </div>
+            <div id="add-coupon-form" class="hidden">
+                <h3>Yeni Kupon Oluştur</h3>
+                <input type="text" id="coupon-code" placeholder="Kupon Kodu">
+                <input type="number" id="discount" placeholder="İndirim (%)">
+                <button onclick="addCoupon()">Kuponu Kaydet</button>
+            </div>
+        </section>
+
+        <!-- Sipariş Yönetimi -->
+        <section id="orders" class="section hidden">
+            <h2>Sipariş Yönetimi</h2>
+            <div id="order-list">
+                <!-- Siparişler Dinamik Olarak Eklenecek -->
+            </div>
+        </section>
+
+        <!-- Kullanıcı Yönetimi -->
+        <section id="users" class="section hidden">
+            <h2>Kullanıcı Yönetimi</h2>
+            <div id="user-list">
+                <!-- Kullanıcılar Dinamik Olarak Eklenecek -->
+            </div>
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>

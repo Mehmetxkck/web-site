@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürünler</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Ürün listesi düzenlemesi */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product-card {
+            width: 200px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            background-color: #f9f9f9;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .filters {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .filters label,
+        .filters select {
+            margin: 5px;
+        }
+
+        #product-list .no-products {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Erciyes Kuruyemiş">
+                </a>
+            </div>
+
+            <!-- Arama Çubuğu -->
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Aradığınız ürün, kategori veya markayı yazınız.">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+
+            <!-- Hesabım ve Sepetim -->
+            <div class="header-icons">
+                <a href="account.html" class="account-link"><i class="fas fa-user"></i><span>Hesabım</span></a>
+                <a href="cart.html" class="cart-link"><i class="fas fa-shopping-cart"></i><span>Sepetim</span></a>
+            </div>
+
+            <!-- Menü Butonu -->
+            
+        </div>
+        </div>
+    </header>
+
+    <section id="products">
+        <div class="container">
+            <h2>Ürünlerimiz</h2>
+            <div class="filters">
+                <!-- Kategoriye Göre Filtreleme -->
+                <label for="category-filter">Kategori:</label>
+                <select id="category-filter">
+                    <option value="all">Tüm Kategoriler</option>
+                    <option value="kuruyemis">Kuruyemiş</option>
+                    <option value="sekerleme">Lokum & Şekerleme</option>
+                    <option value="draje">Draje</option>
+                </select>
+
+                <!-- Fiyata Göre Sıralama -->
+                <label for="price-sort">Sırala:</label>
+                <select id="price-sort">
+                    <option value="default">Varsayılan</option>
+                    <option value="asc">Fiyat: Artan</option>
+                    <option value="desc">Fiyat: Azalan</option>
+                </select>
+            </div>
+
+            <!-- Ürün Listesi -->
+            <div id="product-list" class="product-list">
+                <!-- Ürünler JavaScript ile Dinamik Olarak Eklenecek -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Erciyes Kuruyemiş. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Ürün verileri
+        const products = [
+            { id: 1, name: "Kaju", price: 150, category: "kuruyemis", image: "images/kaju.jpg" },
+            { id: 2, name: "Soslu Fıstık", price: 120, category: "kuruyemis", image: "images/soslu_fistik.jpg" },
+            { id: 3, name: "Antep Fıstığı", price: 200, category: "kuruyemis", image: "images/fistik.jpg" },
+            { id: 4, name: "Soslu Mısır", price: 130, category: "kuruyemis", image: "images/soslu_misir.jpg" },
+            { id: 5, name: "Fındık", price: 330, category: "kuruyemis", image: "images/findik.jpg" },
+            { id: 6, name: "Tuzlu Çekirdek", price: 230, category: "kuruyemis", image: "images/tuzlu_çekirdek.jpg" },
+            { id: 7, name: "Tuzsuz Kabak Çekirdeği", price: 190, category: "kuruyemis", image: "images/tuzsuz_kabak.jpg" },
+            { id: 8, name: "Karışık Kuruyemiş", price: 250, category: "kuruyemis", image: "images/karisik.jpg" },
+            { id: 9, name: "Kabuklu Ceviz", price: 50, category: "kuruyemis", image: "images/ceviz.jpg" },
+            { id: 10, name: "Maraş Sucuğu", price: 40, category: "sekerleme", image: "images/maraş-sucuğu.jpg" },
+            { id: 11, name: "Tuzlu Badem", price: 25, category: "kuruyemis", image: "images/tuzlu-badem.jpg" },
+            { id: 12, name: "Çakıl Taşı", price: 80, category: "draje", image: "images/çakıl-tasi.jpg" }
+        ];
+
+        // Sepet
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Ürünleri render et
+        function renderProducts(filteredProducts) {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = "";
+
+            if (filteredProducts.length === 0) {
+                productList.innerHTML = '<p class="no-products">Ürün bulunamadı.</p>';
+                return;
+            }
+
+            filteredProducts.forEach(product => {
+                productList.innerHTML += `
+                    <div class="product-card">
+                        <a href="product-detail.html?id=${product.id}">
+                            <img src="${product.image}" alt="${product.name}">
+                        </a>
+                        <h3>${product.name}</h3>
+                        <p>${product.price} TL</p>
+                        <button class="add-to-cart" data-id="${product.id}">Sepete Ekle</button>
+                    </div>
+                `;
+            });
+        }
+
+        // Ürünleri filtrele ve sırala
+        function filterAndSortProducts() {
+            const category = document.getElementById('category-filter').value;
+            const sort = document.getElementById('price-sort').value;
+
+            let filteredProducts = products.filter(product => category === "all" || product.category === category);
+
+            if (sort === "asc") {
+                filteredProducts.sort((a, b) => a.price - b.price);
+            } else if (sort === "desc") {
+                filteredProducts.sort((a, b) => b.price - a.price);
+            }
+
+            renderProducts(filteredProducts);
+        }
+
+        // Sepete ürün ekle
+        function addToCart(productId) {
+            const product = products.find(p => p.id === parseInt(productId));
+            if (product) {
+                const existingProduct = cart.find(item => item.id === product.id);
+                if (existingProduct) {
+                    existingProduct.quantity++;
+                } else {
+                    cart.push({ ...product, quantity: 1 });
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`${product.name} sepete eklendi!`);
+            }
+        }
+
+        // Sayfa yüklenince ürünleri göster
+        document.addEventListener("DOMContentLoaded", () => {
+            renderProducts(products);
+
+            document.getElementById('category-filter').addEventListener('change', filterAndSortProducts);
+            document.getElementById('price-sort').addEventListener('change', filterAndSortProducts);
+
+            document.getElementById('product-list').addEventListener('click', (e) => {
+                if (e.target.classList.contains('add-to-cart')) {
+                    addToCart(e.target.dataset.id);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

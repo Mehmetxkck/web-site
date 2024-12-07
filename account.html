@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesabım</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background: green;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: darkgreen;
+        }
+
+        .switch {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .switch a {
+            color: green;
+            text-decoration: none;
+        }
+
+        .switch a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="auth-container">
+        <h2 id="form-title">Giriş Yap</h2>
+
+        <form id="auth-form">
+            <div id="login-fields">
+                <label for="email">E-posta:</label>
+                <input type="email" id="email" placeholder="E-posta adresinizi giriniz" required>
+
+                <label for="password">Şifre:</label>
+                <input type="password" id="password" placeholder="Şifrenizi giriniz" required>
+            </div>
+
+            <div id="register-fields" style="display: none;">
+                <label for="name">Ad Soyad:</label>
+                <input type="text" id="name" placeholder="Adınızı ve soyadınızı giriniz" required>
+
+                <label for="confirm-password">Şifre Tekrar:</label>
+                <input type="password" id="confirm-password" placeholder="Şifrenizi tekrar giriniz" required>
+            </div>
+
+            <button type="submit" id="submit-btn">Giriş Yap</button>
+        </form>
+
+        <div class="switch">
+            <p id="toggle-message">Hesabınız yok mu? <a href="#" id="toggle-auth">Kayıt Ol</a></p>
+        </div>
+    </div>
+
+    <script>
+        const formTitle = document.getElementById('form-title');
+        const authForm = document.getElementById('auth-form');
+        const loginFields = document.getElementById('login-fields');
+        const registerFields = document.getElementById('register-fields');
+        const submitBtn = document.getElementById('submit-btn');
+        const toggleMessage = document.getElementById('toggle-message');
+        const toggleAuth = document.getElementById('toggle-auth');
+
+        let isRegistering = false;
+
+        // Form tipi değiştirme
+        toggleAuth.addEventListener('click', (event) => {
+            event.preventDefault();
+            isRegistering = !isRegistering;
+
+            if (isRegistering) {
+                formTitle.textContent = 'Kayıt Ol';
+                loginFields.style.display = 'none';
+                registerFields.style.display = 'block';
+                submitBtn.textContent = 'Kayıt Ol';
+                toggleMessage.innerHTML = 'Hesabınız var mı? <a href="#" id="toggle-auth">Giriş Yap</a>';
+            } else {
+                formTitle.textContent = 'Giriş Yap';
+                loginFields.style.display = 'block';
+                registerFields.style.display = 'none';
+                submitBtn.textContent = 'Giriş Yap';
+                toggleMessage.innerHTML = 'Hesabınız yok mu? <a href="#" id="toggle-auth">Kayıt Ol</a>';
+            }
+        });
+
+        // Form gönderme işlemi
+        authForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            if (isRegistering) {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+
+                if (password !== confirmPassword) {
+                    alert('Şifreler eşleşmiyor!');
+                    return;
+                }
+
+                // Kullanıcı kayıt işlemleri (backend ile entegre edilecek)
+                alert(`Kayıt başarılı! Hoş geldiniz, ${name}.`);
+            } else {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                // Kullanıcı giriş işlemleri (backend ile entegre edilecek)
+                alert(`Giriş başarılı! Hoş geldiniz, ${email}.`);
+            }
+        });
+    </script>
+</body>
+
+</html>
