@@ -14,7 +14,6 @@
     <!-- Header -->
     <header class="header">
         <div class="container header-container">
-            <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
                     <img src="images/logo.png" alt="Erciyes Kuruyemiş">
@@ -27,17 +26,26 @@
                 <button id="search-btn"><i class="fas fa-search"></i></button>
             </div>
 
-            <!-- Hesabım ve Sepetim -->
+            <!-- Header İkonları (Hesabım, Sepetim, Menü) -->
             <div class="header-icons">
-                <a href="account.html" class="account-link"><i class="fas fa-user"></i><span>Hesabım</span></a>
-                <a href="cart.html" class="cart-link"><i class="fas fa-shopping-cart"></i><span>Sepetim</span></a>
-            </div>
+                <a href="account.html" class="header-icon">
+                    <i class="fas fa-user"></i>
+                    <span>Hesabım</span>
+                </a>
+                <a href="cart.html" class="header-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Sepetim</span>
+                </a>
+                <!-- Menü Butonu -->
+                <div class="header-icon menu-btn" id="menu-btn">
+                    <i class="fas fa-bars"></i>
+                    <span> Menü</span>
+                </div>
 
-            <!-- Menü Butonu -->
-            
-        </div>
+            </div>
         </div>
     </header>
+
 
     <!-- Navigation (Menü) -->
     <nav class="nav-bar">
@@ -50,12 +58,14 @@
     </nav>
 
 
-    <!-- Sidebar Menu -->
-    <div id="sidebar" class="sidebar">
-        <button class="close-btn" onclick="toggleMenu()">×</button>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
         <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="products.html">Ürünler</a></li>
+            <li><a href="#">Kuruyemiş</a></li>
+            <li><a href="#">Şekerleme</a></li>
+            <li><a href="#">Draje</a></li>
+            <li><a href="#">Kategori 4</a></li>
+            <li><a href="#">Kategori 5</a></li>
         </ul>
     </div>
 
