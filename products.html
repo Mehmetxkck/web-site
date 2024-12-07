@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ürünler</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="script.js"></script>
+
     <style>
         /* Ürün listesi düzenlemesi */
         .product-list {
@@ -61,7 +64,6 @@
     <!-- Header -->
     <header class="header">
         <div class="container header-container">
-            <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
                     <img src="images/logo.png" alt="Erciyes Kuruyemiş">
@@ -74,15 +76,23 @@
                 <button id="search-btn"><i class="fas fa-search"></i></button>
             </div>
 
-            <!-- Hesabım ve Sepetim -->
+            <!-- Header İkonları (Hesabım, Sepetim, Menü) -->
             <div class="header-icons">
-                <a href="account.html" class="account-link"><i class="fas fa-user"></i><span>Hesabım</span></a>
-                <a href="cart.html" class="cart-link"><i class="fas fa-shopping-cart"></i><span>Sepetim</span></a>
-            </div>
+                <a href="account.html" class="header-icon">
+                    <i class="fas fa-user"></i>
+                    <span>Hesabım</span>
+                </a>
+                <a href="cart.html" class="header-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Sepetim</span>
+                </a>
+                <!-- Menü Butonu -->
+                <div class="header-icon menu-btn" id="menu-btn">
+                    <i class="fas fa-bars"></i>
+                    <span> Menü</span>
+                </div>
 
-            <!-- Menü Butonu -->
-            
-        </div>
+            </div>
         </div>
     </header>
 
@@ -210,6 +220,22 @@
                 }
             });
         });
+        // URL'den kategori parametresini al
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+
+        // Ürünleri filtrele
+        function filterProductsByCategory() {
+            if (category) {
+                const filteredProducts = products.filter(product => product.category === category);
+                renderProducts(filteredProducts);
+            } else {
+                renderProducts(products); // Tüm ürünleri göster
+            }
+        }
+
+        // Sayfa yüklendiğinde kategoriye göre
+        window.onload = filterProductsByCategory;
     </script>
 </body>
 
