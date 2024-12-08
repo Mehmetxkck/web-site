@@ -322,29 +322,13 @@ a:hover {
     object-fit: cover;
 }
 
+/* Remove the arrows */
 .prev-btn,
 .next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    z-index: 2;
+    display: none;
 }
 
-.prev-btn {
-    left: 15px;
-}
-
-.next-btn {
-    right: 15px;
-}
-
+/* Dots stay visible */
 .dots {
     text-align: center;
     margin-top: 15px;
@@ -371,9 +355,10 @@ a:hover {
     text-align: center;
 }
 
+
 .featured-products h2 {
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .featured-products .products-list {
@@ -406,11 +391,12 @@ a:hover {
 .featured-products .product-card h3 {
     font-size: 1.2rem;
     color: #333;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .featured-products .product-card p {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
     color: #555;
     margin-bottom: 1rem;
 }
@@ -606,12 +592,12 @@ footer {
     }
 
     .sidebar {
-        width: 100%;
+        width: 50%;
     }
 }
 
 /* Genel Mobil Ayarları */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
     /* Header Düzenlemesi */
     .header-container {
@@ -635,15 +621,11 @@ footer {
         width: 90%;
     }
 
-    /* Slider Düzeni */
     .slider {
         position: relative;
         text-align: center;
-    }
-
-    .slider img {
-        width: 100%;
-        height: auto;
+        margin-bottom: 30px;
+        /* Slider ile öne çıkan ürünler arasındaki boşluğu azalt */
     }
 
     .slider-controls {
@@ -653,30 +635,59 @@ footer {
         right: 5%;
         display: flex;
         justify-content: space-between;
+        width: 100%;
+        /* Butonları slider kenarlarına yerleştir */
+        transform: translateY(-50%);
     }
 
-    /* Ürünler ve Genel Boşluklar */
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 0 10px;
-    }
-
-    .product-card {
-        margin: 0 auto;
-    }
-
-    /* Sepet ve Footer */
-    .cart-title {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-
-    footer p {
-        font-size: 0.9rem;
-        text-align: center;
+    .slider .prev-btn,
+    .slider .next-btn {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 2rem;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 2;
     }
 }
+
+/* Hero Section ile Featured Products Arası Boşluk */
+@media screen and (max-width: 768px) {
+    .hero {
+        padding: 3rem 0;
+        /* Hero bölümünün üst ve alt padding'ini azalt */
+    }
+
+    .featured-products {
+        padding: 2rem 0;
+        /* Öne çıkan ürünler arasındaki boşluğu azalt */
+    }
+
+}
+
+/* Ürünler ve Genel Boşluklar */
+.product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 0 10px;
+}
+
+.product-card {
+    margin: 0 auto;
+}
+
+/* Sepet ve Footer */
+.cart-title {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
 
 
 
@@ -695,17 +706,16 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Sepetim Bölümü Stil */
+/* Genel Sepet Stili */
 #cart {
-    padding: 2rem 1rem;
+    padding: 1rem;
     background-color: #f9f9f9;
-    text-align: center;
 }
 
 #cart h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    text-align: center;
     color: #8a3c10;
+    font-size: 2rem;
 }
 
 #cart-items {
@@ -714,29 +724,33 @@ h2 {
 
 .cart-item {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 15px;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
     border-radius: 8px;
     background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Ürün Bilgisi */
 .cart-item .item-info {
     display: flex;
     gap: 15px;
     flex: 1;
-    text-align: left;
 }
 
 .cart-item .item-info img {
-    width: 200px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Mobil uyumlu ürün detayları */
+.cart-item .item-info .item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .cart-item .item-details {
@@ -758,8 +772,11 @@ h2 {
 
 .cart-item .item-actions {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
     gap: 10px;
+
 }
 
 .cart-item .item-actions button {
@@ -799,9 +816,29 @@ h2 {
     background-color: #b7551d;
 }
 
+/* Mobil uyumlu Sepet Özeti */
+#cart-summary {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
 #cart-summary h3 {
-    font-size: 1.2rem;
-    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+/* Butonlar */
+button {
+    padding: 10px 15px;
+    background-color: #8a3c10;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #b7551d;
 }
 
 #checkout-btn {
@@ -817,4 +854,63 @@ h2 {
 
 #checkout-btn:hover {
     background-color: #b7551d;
+}
+
+/* Sepetim sayfası için responsive düzenlemeler */
+@media screen and (max-width: 768px) {
+    #cart-items {
+        padding: 0 10px;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item .item-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item .item-info img {
+        width: 250px;
+        height: 180px;
+    }
+
+    .cart-item .item-actions {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #cart-summary {
+        font-size: 1rem;
+    }
+
+    button {
+        width: 100%;
+        font-size: 1.1rem;
+        padding: 12px;
+    }
+
+    .coupon-section input {
+        width: 90%;
+        margin-right: 10px;
+    }
+
+    .coupon-section button {
+        width: 45%;
+    }
+}
+
+/* Daha küçük ekranlar için ek düzenlemeler */
+@media screen and (max-width: 480px) {
+    .cart-item .item-info img {
+        width: 60px;
+        height: 60px;
+    }
+
+    button {
+        padding: 10px;
+    }
 }
