@@ -93,6 +93,17 @@ a:hover {
     z-index: 1000;
 }
 
+/* Sidebar Logo Stili */
+.sidebar-logo img {
+    width: 100%;
+    /* Logo genişliğini sidebar genişliğine göre ayarlıyoruz */
+    max-width: 200px;
+    /* Logo genişliği çok büyük olmasın diye bir sınır koyuyoruz */
+    display: block;
+    margin-bottom: 30px;
+    /* Logo ile kategoriler arasında boşluk bırakıyoruz */
+}
+
 .sidebar.active {
     left: 0;
 }
@@ -114,6 +125,28 @@ a:hover {
 
 .sidebar ul li {
     margin: 15px 0;
+}
+
+/* Alt kategorilerin sağa kaydırılması */
+.sidebar ul .subcategory {
+    list-style-type: none;
+    padding-left: 20px;
+    /* Alt kategorileri biraz sağa kaydır */
+}
+
+.sidebar ul .subcategory li {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Alt kategoriler tıklandığında daha dikkat çekici olsun */
+.sidebar ul .subcategory li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar ul .subcategory li a:hover {
+    text-decoration: underline;
 }
 
 .sidebar ul li a {
@@ -570,6 +603,76 @@ footer {
         width: 100%;
     }
 }
+
+/* Genel Mobil Ayarları */
+@media (max-width: 768px) {
+
+    /* Header Düzenlemesi */
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo img {
+        max-width: 150px;
+        margin-bottom: 10px;
+    }
+
+    .search-bar {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .header-icons {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 90%;
+    }
+
+    /* Slider Düzeni */
+    .slider {
+        position: relative;
+        text-align: center;
+    }
+
+    .slider img {
+        width: 100%;
+        height: auto;
+    }
+
+    .slider-controls {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        right: 5%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* Ürünler ve Genel Boşluklar */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .product-card {
+        margin: 0 auto;
+    }
+
+    /* Sepet ve Footer */
+    .cart-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+}
+
+
 body {
     font-family: Arial, sans-serif;
 }
