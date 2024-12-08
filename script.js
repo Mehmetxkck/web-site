@@ -54,10 +54,18 @@ if (slides.length > 0) {
 
 // Products
 const products = [
-    { id: 1, name: "Kaju", price: 150, category: "kuruyemis", image: "images/kaju.jpg" },
-    { id: 2, name: "Soslu Fıstık", price: 120, category: "kuruyemis", image: "images/soslu_fistik.jpg" },
-    { id: 3, name: "Antep Fıstığı", price: 200, category: "kuruyemis", image: "images/fistik.jpg" },
-    // Add more products here...
+    { id: 1, name: "Kaju", price: 150, category: "kuruyemis", subcategory: "cig", image: "images/kaju.jpg" },
+    { id: 2, name: "Soslu Fıstık", price: 120, category: "kuruyemis", subcategory: "kavrilmis", image: "images/soslu_fistik.jpg" },
+    { id: 3, name: "Antep Fıstığı", price: 200, category: "kuruyemis", subcategory: "cig", image: "images/fistik.jpg" },
+    { id: 4, name: "Soslu Mısır", price: 130, category: "kuruyemis", subcategory: "kavrilmis", image: "images/soslu_misir.jpg" },
+    { id: 5, name: "Fındık", price: 330, category: "kuruyemis", subcategory: "cig", image: "images/findik.jpg" },
+    { id: 6, name: "Tuzlu Çekirdek", price: 230, category: "kuruyemis", subcategory: "kavrilmis", image: "images/tuzlu_çekirdek.jpg" },
+    { id: 7, name: "Tuzsuz Kabak Çekirdeği", price: 190, category: "kuruyemis", subcategory: "cig", image: "images/tuzsuz_kabak.jpg" },
+    { id: 8, name: "Karışık Kuruyemiş", price: 250, category: "kuruyemis", subcategory: "cig", image: "images/karisik.jpg" },
+    { id: 9, name: "Kabuklu Ceviz", price: 50, category: "kuruyemis", subcategory: "kavrilmis", image: "images/ceviz.jpg" },
+    { id: 10, name: "Maraş Sucuğu", price: 40, category: "sekerleme", subcategory: null, image: "images/maraş-sucuğu.jpg" },
+    { id: 11, name: "Tuzlu Badem", price: 25, category: "kuruyemis", subcategory: "kavrilmis", image: "images/tuzlu-badem.jpg" },
+    { id: 12, name: "Çakıl Taşı", price: 80, category: "draje", subcategory: null, image: "images/çakıl-tasi.jpg" }
 ];
 
 let cart = [];
@@ -136,15 +144,16 @@ function loadProductDetail(productId) {
 // Sidebar menu toggle
 const menuButton = document.getElementById('menu-btn');
 const sidebar = document.getElementById('sidebar');
+const closeBtn = document.querySelector('.close-btn');
 
-// Sidebar kapalıyken tamamen gizleme
+// Sidebar toggle
 function toggleSidebar() {
     if (sidebar.style.display === 'none' || sidebar.style.display === '') {
         sidebar.style.display = 'block';
-        setTimeout(() => sidebar.classList.add('active'), 10); // Animasyon için
+        setTimeout(() => sidebar.classList.add('active'), 10);
     } else {
         sidebar.classList.remove('active');
-        setTimeout(() => sidebar.style.display = 'none', 300); // Animasyon sonrası gizle
+        setTimeout(() => sidebar.style.display = 'none', 300);
     }
 }
 
@@ -155,9 +164,17 @@ menuButton.addEventListener('click', toggleSidebar);
 document.addEventListener('click', (event) => {
     if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) {
         sidebar.classList.remove('active');
-        setTimeout(() => sidebar.style.display = 'none', 300); // Delay for animation
+        setTimeout(() => sidebar.style.display = 'none', 300);
     }
 });
+
+// Close sidebar on button click
+if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        setTimeout(() => sidebar.style.display = 'none', 300);
+    });
+}
 
 // Render products on page load
 document.addEventListener("DOMContentLoaded", () => {
@@ -170,4 +187,3 @@ document.addEventListener("DOMContentLoaded", () => {
         updateCart();
     }
 });
-
