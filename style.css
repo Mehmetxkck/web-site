@@ -115,8 +115,14 @@ a:hover {
     color: white;
     font-size: 2rem;
     cursor: pointer;
-    margin-bottom: 20px;
+    position: absolute;
+    /* Mutlaka eklenmeli */
+    top: 10px;
+    /* Sidebar'ın tepesine konumlandır */
+    right: 10px;
+    /* Sağ kenara yakınlaştır */
 }
+
 
 .sidebar ul {
     list-style: none;
@@ -671,6 +677,7 @@ footer {
         text-align: center;
     }
 }
+
 
 
 body {
