@@ -20,13 +20,11 @@
                 </a>
             </div>
 
-            <!-- Arama Çubuğu -->
             <div class="search-bar">
                 <input type="text" id="search-input" placeholder="Aradığınız ürün, kategori veya markayı yazınız.">
                 <button id="search-btn"><i class="fas fa-search"></i></button>
             </div>
 
-            <!-- Header İkonları (Hesabım, Sepetim, Menü) -->
             <div class="header-icons">
                 <a href="account.html" class="header-icon">
                     <i class="fas fa-user"></i>
@@ -36,12 +34,10 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span>Sepetim</span>
                 </a>
-                <!-- Menü Butonu -->
                 <div class="header-icon menu-btn" id="menu-btn">
                     <i class="fas fa-bars"></i>
                     <span> Menü</span>
                 </div>
-
             </div>
         </div>
     </header>
@@ -62,25 +58,37 @@
     <div id="sidebar" class="sidebar">
         <button class="close-btn">&times;</button>
         <div class="sidebar-logo">
-            <img src="images/logo-1.png" alt="Logo" />
+            <h1 href="index.html"> Menü</h1>
         </div>
         <ul>
-            <li><a href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=kuruyemis">Kuruyemiş</a>
-                <ul class="subcategory">
-                    <li><a
-                            href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=kuruyemis&subcategory=cig">Çiğ
-                            Kuruyemiş</a></li>
-                    <li><a
-                            href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=kuruyemis&subcategory=kavrulmis">Kavrulmuş
-                            Kuruyemiş</a></li>
-                </ul>
+            <li><a href="products.html">Tüm Ürünler</a></li>
+            <ul class="subcategory">
+                <li>
+                    <a href="products.html?category=kuruyemis">Kuruyemiş</a>
+                    <ul class="subcategory">
+                        <li><a href="products.html?category=kuruyemis&subcategory=cig">Çiğ
+                                Kuruyemiş</a></li>
+                        <li><a href="products.html?category=kuruyemis&subcategory=kavrulmis">Kavrulmuş
+                                Kuruyemiş</a></li>
+                    </ul>
+                </li>
+                <li><a href="products.html?category=sekerleme">Lokum & Şekerleme</a>
+                    <ul class="subcategory">
+                        <li><a href="products.html?category=kuruyemis&subcategory=cevizli-sucuklar">
+                                Cevizli Sucuklar</a></li>
+                        <li><a href="products.html?category=kuruyemis&subcategory=cezerye">
+                                Cezerye</a></li>
+                        <li><a href="products.html?category=kuruyemis&subcategory=hunkar-lokum">
+                                Hünkar Lokumlar</a></li>
+                        <li><a href="products.html?category=kuruyemis&subcategory=fitil&kus-lokumlar">
+                                Fitil&Kuş Lokumlar</a></li>
+                        <li><a href="products.html?category=kuruyemis&subcategory=klasik-lokumlar">
+                                Klasik Lokumlar</a></li>
+                    </ul>
+                <li><a href="products.html?category=draje">Draje</a></li>
+            </ul>
             </li>
-            <li><a href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=sekerleme">Lokum & Şekerleme</a>
-            </li>
-            <li><a href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=draje">Draje</a></li>
-            <!-- Diğer kategoriler -->
-        </ul>
-    </div>
+        </div>
 
     <!-- Sepet -->
     <section id="cart">
@@ -208,6 +216,32 @@
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart();
         }
+        // Sidebar menu toggle
+        const menuButton = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const closeBtn = document.querySelector('.close-btn');
+
+        // Sidebar toggle
+        function toggleSidebar() {
+            sidebar.classList.toggle('active');
+        }
+
+        // Open/close sidebar
+        if (menuButton) {
+            menuButton.addEventListener('click', toggleSidebar);
+        }
+
+        // Close sidebar on button click
+        if (closeBtn) {
+            closeBtn.addEventListener('click', toggleSidebar);
+        }
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
 
         // Sayfa yüklendiğinde sepeti render et
         renderCart();

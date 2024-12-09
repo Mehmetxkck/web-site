@@ -18,8 +18,18 @@ a:hover {
 }
 
 .header {
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
+    position: sticky;
+    /* Sticky pozisyon */
+    top: 0;
+    /* Üstte sabitler */
+    width: 100%;
+    /* Genişliği %100 yapar */
+    background-color: white;
+    /* Arka plan rengi */
+    z-index: 1000;
+    /* Diğer içeriklerin üstünde görünmesi için */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Gölgelendirme efekti */
 }
 
 .header-container {
@@ -28,6 +38,11 @@ a:hover {
     justify-content: space-between;
     padding: 10px 20px;
     position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
 }
 
 .logo img {
@@ -64,6 +79,14 @@ a:hover {
         display: block;
         /* Menü tuşu her boyutta görünsün */
     }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
 }
 
 .nav-bar {
@@ -93,15 +116,33 @@ a:hover {
     z-index: 1000;
 }
 
-/* Sidebar Logo Stili */
-.sidebar-logo img {
-    width: 100%;
-    /* Logo genişliğini sidebar genişliğine göre ayarlıyoruz */
-    max-width: 200px;
-    /* Logo genişliği çok büyük olmasın diye bir sınır koyuyoruz */
-    display: block;
+.sidebar-logo {
+    text-align: left;
+    /* Metni yatayda ortalar */
     margin-bottom: 30px;
-    /* Logo ile kategoriler arasında boşluk bırakıyoruz */
+    /* Metin ile kategoriler arasında boşluk bırakıyoruz */
+}
+
+.sidebar-logo h1 {
+    font-size: 45px;
+    /* Başlık boyutunu ayarlıyoruz, ihtiyaç duyduğunuz boyutta değiştirebilirsiniz */
+    font-weight: bold;
+    /* Metni kalın yapıyoruz */
+    color: white;
+    /* Metnin rengini belirliyoruz, ihtiyaca göre değiştirebilirsiniz */
+    margin: 0;
+    /* Başlık altındaki boşluğu kaldırıyoruz */
+    padding: 0;
+    /* Başlık etrafındaki ekstra boşluğu kaldırıyoruz */
+}
+
+.sidebar-logo p {
+    font-size: 46px;
+    /* Alt metin boyutunu ayarlıyoruz */
+    color: #666;
+    /* Alt metin rengini belirliyoruz */
+    margin: 5px 0 0;
+    /* Alt metin ile başlık arasında biraz boşluk bırakıyoruz */
 }
 
 .sidebar.active {
@@ -119,12 +160,14 @@ a:hover {
     /* Mutlaka eklenmeli */
     top: 10px;
     /* Sidebar'ın tepesine konumlandır */
-    right: 10px;
+    right: 30px;
     /* Sağ kenara yakınlaştır */
 }
 
 
 .sidebar ul {
+    font-weight: bold;
+    font-size: 17;
     list-style: none;
     padding: 0;
 }
@@ -141,7 +184,9 @@ a:hover {
 }
 
 .sidebar ul .subcategory li {
-    font-size: 14px;
+
+    font-weight: bold;
+    font-size: 15px;
     margin-bottom: 5px;
 }
 
@@ -232,6 +277,44 @@ a:hover {
     margin-bottom: 5px;
 }
 
+/* Mobil tasarım */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        /* Elemanları dikey hizalar */
+        align-items: center;
+        /* Ortalar */
+    }
+
+    .header-icons {
+        width: 100%;
+        /* Tam genişlikte */
+        justify-content: space-between;
+        /* Elemanları eşit dağıt */
+        padding: 0 10px;
+        /* Yatay boşluk */
+    }
+
+    .menu-btn span {
+        display: none;
+        /* Menü yazısını gizle */
+    }
+
+    .search-bar {
+        margin-top: 10px;
+        padding: 0 10px;
+        /* Kenarlardan içeri çek */
+    }
+
+    .search-bar input {
+        width: 100%;
+    }
+
+    .search-bar button {
+        width: auto;
+    }
+}
+
 .nav-bar ul {
     list-style: none;
     padding: 0;
@@ -305,21 +388,54 @@ a:hover {
 .slider {
     position: relative;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1190px;
     height: 500px;
     overflow: hidden;
-    margin: auto;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .slides {
     display: flex;
     transition: transform 1s ease-in-out;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .slide {
     min-width: 100%;
     height: 500px;
     object-fit: cover;
+}
+
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Resmin taşma yapmadan tamamen görünmesini sağlar */
+}
+
+
+/* Mobil uyum için */
+@media (max-width: 768px) {
+    .slider {
+        height: 300px;
+        justify-content: center;
+        align-items: center;
+        /* Daha küçük ekranlar için slider yüksekliğini küçültüyoruz */
+    }
+
+    .slide {
+        height: 300px;
+        justify-content: center;
+        align-items: center;
+        /* Slider yüksekliğine uyacak şekilde ayarlanıyor */
+    }
+
+
 }
 
 /* Remove the arrows */
@@ -330,22 +446,27 @@ a:hover {
 
 /* Dots stay visible */
 .dots {
-    text-align: center;
-    margin-top: 15px;
+    position: absolute;
+    bottom: 10px;
+    /* Slider'ın altına yerleştirildi */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    /* Dotlar arasındaki boşluk */
 }
 
-.dots .dot {
-    display: inline-block;
+.dot {
     width: 12px;
     height: 12px;
-    margin: 0 5px;
-    background-color: #ccc;
+    background-color: #bbb;
     border-radius: 50%;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.dots .dot.active {
-    background-color: #8a3c10;
+.dot.active {
+    background-color: #007bff;
 }
 
 /* Featured Products */
@@ -572,6 +693,16 @@ footer {
         width: 200px;
     }
 
+    .sidebar .close-btn {
+        position: fixed;
+        /* Ekranda sabit konumlandır */
+        top: 10px;
+        /* Üstten 10px mesafe */
+        right: 10px;
+        /* Sağdan 10px mesafe */
+    }
+
+
     .menu-button {
         display: block;
     }
@@ -625,7 +756,8 @@ footer {
         position: relative;
         text-align: center;
         margin-bottom: 30px;
-        /* Slider ile öne çıkan ürünler arasındaki boşluğu azalt */
+        justify-content: center;
+        align-items: center;
     }
 
     .slider-controls {
@@ -746,85 +878,7 @@ h2 {
     border-radius: 8px;
 }
 
-/* Mobil uyumlu ürün detayları */
-.cart-item .item-info .item-details {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
 
-.cart-item .item-details {
-    flex: 1;
-    text-align: left;
-}
-
-.cart-item .item-details h4 {
-    font-size: 1rem;
-    font-weight: bold;
-    margin: 0;
-    color: #333;
-}
-
-.cart-item .item-details p {
-    margin: 5px 0;
-    color: #666;
-}
-
-.cart-item .item-actions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 10px;
-
-}
-
-.cart-item .item-actions button {
-    background-color: #8a3c10;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.cart-item .item-actions button:hover {
-    background-color: #b7551d;
-}
-
-.coupon-section {
-    margin: 20px 0;
-}
-
-.coupon-section input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 200px;
-    margin-right: 10px;
-}
-
-.coupon-section button {
-    padding: 10px 15px;
-    background-color: #8a3c10;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.coupon-section button:hover {
-    background-color: #b7551d;
-}
-
-/* Mobil uyumlu Sepet Özeti */
-#cart-summary {
-    margin-top: 1.5rem;
-    text-align: center;
-}
-
-#cart-summary h3 {
-    font-size: 1.1rem;
-}
 
 /* Butonlar */
 button {
@@ -858,6 +912,87 @@ button:hover {
 
 /* Sepetim sayfası için responsive düzenlemeler */
 @media screen and (max-width: 768px) {
+
+    /* Mobil uyumlu ürün detayları */
+    .cart-item .item-info .item-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cart-item .item-details {
+        flex: 1;
+        text-align: left;
+    }
+
+    .cart-item .item-details h4 {
+        font-size: 1rem;
+        font-weight: bold;
+        margin: 0;
+        color: #333;
+    }
+
+    .cart-item .item-details p {
+        margin: 5px 0;
+        color: #666;
+    }
+
+    .cart-item .item-actions {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 10px;
+
+    }
+
+    .cart-item .item-actions button {
+        background-color: #8a3c10;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .cart-item .item-actions button:hover {
+        background-color: #b7551d;
+    }
+
+    .coupon-section {
+        margin: 20px 0;
+    }
+
+    .coupon-section input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 200px;
+        margin-right: 10px;
+    }
+
+    .coupon-section button {
+        padding: 10px 15px;
+        background-color: #8a3c10;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .coupon-section button:hover {
+        background-color: #b7551d;
+    }
+
+    /* Mobil uyumlu Sepet Özeti */
+    #cart-summary {
+        margin-top: 1.5rem;
+        text-align: center;
+    }
+
+    #cart-summary h3 {
+        font-size: 1.1rem;
+    }
+
     #cart-items {
         padding: 0 10px;
     }
@@ -901,6 +1036,12 @@ button:hover {
     .coupon-section button {
         width: 45%;
     }
+
+    #map iframe {
+        width: 300px;
+        /* Küçük ekranlar için yüksekliği azaltır */
+    }
+
 }
 
 /* Daha küçük ekranlar için ek düzenlemeler */

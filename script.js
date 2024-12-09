@@ -5,52 +5,69 @@ const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 let currentSlide = 0;
 
-// Check if slides exist before proceeding
-if (slides.length > 0) {
-    // Create dots
+// Slider güncelleyici
+function updateSlider() {
+    const slideWidth = slides[0].clientWidth;
+
+    // Slider'ı güncelle
+    document.querySelector('.slides').style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+    // Aktif dot'u güncelle
+    dotsContainer.querySelectorAll('.dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+}
+
+// Dot'ları oluştur
+function createDots() {
+    // İlk olarak mevcut dot'ları temizle
+    dotsContainer.innerHTML = '';
+
+    // Her bir slide için dot oluştur
     slides.forEach((_, index) => {
         const dot = document.createElement('div');
         dot.classList.add('dot');
-        if (index === 0) dot.classList.add('active');
+        if (index === 0) dot.classList.add('active'); // İlk dot aktif
         dot.setAttribute('data-slide', index);
         dotsContainer.appendChild(dot);
     });
 
-    // Update slider
-    function updateSlider() {
-        const width = slides[0].clientWidth;
-        document.querySelector('.slides').style.transform = `translateX(-${currentSlide * width}px)`;
-
-        dotsContainer.querySelectorAll('.dot').forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
-        });
-    }
-
-    // Next slide
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        updateSlider();
-    }
-
-    // Previous slide
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        updateSlider();
-    }
-
-    // Event listeners
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
+    // Dot'lara tıklama olayını bağla
     dotsContainer.addEventListener('click', (e) => {
         if (e.target.classList.contains('dot')) {
             currentSlide = parseInt(e.target.getAttribute('data-slide'));
             updateSlider();
         }
     });
-
-    // Auto-slide
-    setInterval(nextSlide, 5000);
 }
+
+// Slider ileri
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlider();
+}
+
+// Slider geri
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateSlider();
+}
+
+// Tıklama olaylarını bağla
+nextBtn?.addEventListener('click', nextSlide);
+prevBtn?.addEventListener('click', prevSlide);
+
+// Otomatik kaydırma
+setInterval(nextSlide, 5000);
+
+// Sayfa yüklendiğinde başlat
+document.addEventListener('DOMContentLoaded', () => {
+    if (slides.length > 0) {
+        createDots();
+        updateSlider();
+    }
+});
+
 
 // Products
 const products = [

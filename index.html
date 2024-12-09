@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
     <!-- Header -->
     <header class="header">
         <div class="container header-container">
@@ -20,13 +21,11 @@
                 </a>
             </div>
 
-            <!-- Arama Çubuğu -->
             <div class="search-bar">
                 <input type="text" id="search-input" placeholder="Aradığınız ürün, kategori veya markayı yazınız.">
                 <button id="search-btn"><i class="fas fa-search"></i></button>
             </div>
 
-            <!-- Header İkonları (Hesabım, Sepetim, Menü) -->
             <div class="header-icons">
                 <a href="account.html" class="header-icon">
                     <i class="fas fa-user"></i>
@@ -36,12 +35,10 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span>Sepetim</span>
                 </a>
-                <!-- Menü Butonu -->
                 <div class="header-icon menu-btn" id="menu-btn">
                     <i class="fas fa-bars"></i>
                     <span> Menü</span>
                 </div>
-
             </div>
         </div>
     </header>
@@ -62,44 +59,60 @@
     <div id="sidebar" class="sidebar">
         <button class="close-btn">&times;</button>
         <div class="sidebar-logo">
-            <img src="images/logo-1.png" alt="Logo" />
+            <h1 href="index.html"> Menü</h1>
         </div>
         <ul>
-            <li><a href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=kuruyemis">Kuruyemiş</a>
-                <ul class="subcategory">
-                    <li><a
-                            href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=kuruyemis&subcategory=cig">Çiğ
-                            Kuruyemiş</a></li>
-                    <li><a
-                            href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=kuruyemis&subcategory=kavrulmis">Kavrulmuş
-                            Kuruyemiş</a></li>
-                </ul>
+            <li><a href="products.html">Tüm Ürünler</a></li>
+            <ul class="subcategory">
+                <li>
+                    <a href="products.html?category=kuruyemis">Kuruyemiş</a>
+                    <ul class="subcategory">
+                        <li><a href="products.html?category=kuruyemis&subcategory=cig">Çiğ
+                                Kuruyemiş</a></li>
+                        <li><a href="products.html?category=kuruyemis&subcategory=kavrulmis">Kavrulmuş
+                                Kuruyemiş</a></li>
+                    </ul>
+                </li>
+                <li><a href="products.html?category=sekerleme">Lokum & Şekerleme</a>
+                    <ul class="subcategory">
+                        <li><a href="products.html?category=kuruyemis&subcategory=cevizli-sucuklar">
+                                Cevizli Sucuklar</a></li>
+                        <li><a href="products.html?category=kuruyemis&subcategory=cezerye">
+                                Cezerye</a></li>
+                        <li><a href="products.html?category=kuruyemis&subcategory=hunkar-lokum">
+                                Hünkar Lokumlar</a></li>
+                        <li><a href="products.html?category=kuruyemis&subcategory=fitil&kus-lokumlar">
+                                Fitil&Kuş Lokumlar</a></li>
+                        <li><a href="products.html?category=kuruyemis&subcategory=klasik-lokumlar">
+                                Klasik Lokumlar</a></li>
+                    </ul>
+                <li><a href="products.html?category=draje">Draje</a></li>
+                <li><a href="products.html?category=kurutulmus-meyve">Kurutulmuş Meyveler</a></li>
+            </ul>
             </li>
-            <li><a href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=sekerleme">Lokum & Şekerleme</a>
-            </li>
-            <li><a href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=draje">Draje</a></li>
+
             <!-- Diğer kategoriler -->
         </ul>
+        </ul>
     </div>
-
-
-
 
     <!-- Slider -->
     <section class="hero">
         <div class="slider">
-            <button class="prev-btn">&lt;</button>
-            <button class="next-btn">&gt;</button>
             <div class="slides">
-                <img src="images/slider1.jpg" class="slide active" alt="Slider 1">
-                <img src="images/slider2.jpg" class="slide" alt="Slider 2">
-                <img src="images/slider3.jpg" class="slide" alt="Slider 3">
+                <img src="images/slider1.png" class="slide active" alt="Slider 1">
+                <img src="images/slider2.png" class="slide" alt="Slider 2">
+                <img src="images/slider3.png" class="slide" alt="Slider 3">
             </div>
             <div class="dots">
-                <!-- Dots will be dynamically created -->
+                <span class="dot" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
             </div>
+
         </div>
     </section>
+
 
     <!-- Öne Çıkan Ürünler -->
     <section class="featured-products">
@@ -141,8 +154,8 @@
         <div class="container">
             <h2>Kampanyalar</h2>
             <div class="campaign-banner">
-                <h3>3 Al 2 Öde Kampanyası</h3>
-                <p>Seçili ürünlerde geçerlidir. Kaçırmayın!</p>
+                <h3>Yılbaşı Lezzet Dolu, Fiyatlar Bütçe Dostu!</h3>
+                <h4>Yılbaşına Özel Fiyatlar</h4>
                 <a href="products.html" class="btn">Hemen İncele</a>
             </div>
         </div>
@@ -152,8 +165,8 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2>İletişim</h2>
-            <p>Email: info@erciyeskuruyemis.com</p>
-            <p>Telefon: +90 123 456 78 90</p>
+            <p>Email: haserciyesshop@gmail.com</p>
+            <p>Telefon: +90 539 787 73 01</p>
             <div id="map">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12812.267769877368!2d35.0123456!3d37.0012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x152f5ff6ff6f43f9%3A0x8460c12ed5d131a3!2sHas%20Erciyes%20Kuruyemiş%2C%20Turgut%20Özal%20Blv.%2010D%2C%20Güzelyalı%2C%2001170%20Çukurova%2FAdana!5e0!3m2!1str!2str!4v1691126882345!5m2!1str!2str"
@@ -164,7 +177,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Erciyes Kuruyemiş. Tüm hakları saklıdır.</p>
+        <p>&copy; 2024 Has Erciyes Kuruyemiş. Tüm hakları saklıdır.</p>
     </footer>
 
     <script src="script.js"></script>
