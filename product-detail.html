@@ -53,7 +53,7 @@
         }
 
         .product-detail .add-to-cart:hover {
-            background-color: #b7551d;
+            background-color: #a44a1a;
         }
 
         /* Gram Seçenekleri için Stil */
@@ -100,7 +100,6 @@
         </div>
     </header>
 
-
     <!-- Navigation (Menü) -->
     <nav class="nav-bar">
         <ul>
@@ -111,12 +110,11 @@
         </ul>
     </nav>
 
-
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
         <button class="close-btn">&times;</button>
         <div class="sidebar-logo">
-            <h1 href="index.html"> Menü</h1>
+            <h1> Menü</h1>
         </div>
         <ul>
             <li><a href="products.html">Tüm Ürünler</a></li>
@@ -124,29 +122,18 @@
                 <li>
                     <a href="products.html?category=kuruyemis">Kuruyemiş</a>
                     <ul class="subcategory">
-                        <li><a href="products.html?category=kuruyemis&subcategory=cig">Çiğ
-                                Kuruyemiş</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=kavrulmis">Kavrulmuş
-                                Kuruyemiş</a></li>
+                        <li><a href="products.html?category=kuruyemis&subcategory=cig">Çiğ Kuruyemiş</a></li>
+                        <li><a href="products.html ?category=kuruyemis&subcategory=kavurma">Kavurma</a></li>
                     </ul>
                 </li>
-                <li><a href="products.html?category=sekerleme">Lokum & Şekerleme</a>
-                    <ul class="subcategory">
-                        <li><a href="products.html?category=kuruyemis&subcategory=cevizli-sucuklar">
-                                Cevizli Sucuklar</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=cezerye">
-                                Cezerye</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=hunkar-lokum">
-                                Hünkar Lokumlar</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=fitil&kus-lokumlar">
-                                Fitil&Kuş Lokumlar</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=klasik-lokumlar">
-                                Klasik Lokumlar</a></li>
-                    </ul>
-                <li><a href="products.html?category=draje">Draje</a></li>
+                <li><a href="products.html?category=atistirmalik">Atıştırmalık</a></li>
+                <li><a href="products.html?category=kuruyemis&subcategory=karisik">Karışık Kuruyemiş</a></li>
             </ul>
-            </li>
+            <li><a href="#contact">İletişim</a></li>
+        </ul>
+    </div>
 
+    <!-- Ürün Detayları -->
     <section id="product-detail">
         <div class="container">
             <div id="product-detail-container" class="product-detail">
@@ -155,142 +142,72 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 Has Erciyes Kuruyemiş. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Ürün verileri
+        // Ürün Verileri
         const products = [
-            { id: 1, name: "Kaju", price: 150, category: "kuruyemis", image: "images/kaju.jpg", description: "Lezzetli kaju fıstığı.", weights: [1000, 750, 500, 250] },
-            { id: 2, name: "Soslu Fıstık", price: 120, category: "kuruyemis", image: "images/soslu_fistik.jpg", description: "Özel soslu fıstık.", weights: [1000, 750, 500, 250] },
-            { id: 3, name: "Fıstık", price: 200, category: "kuruyemis", image: "images/fistik.jpg", description: "Taze fıstık.", weights: [1000, 750, 500, 250] },
-            { id: 4, name: "Soslu Mısır", price: 130, category: "kuruyemis", image: "images/soslu_misir.jpg", description: "Lezzetli soslu mısır.", weights: [1000, 750, 500, 250] },
-            { id: 5, name: "Fındık", price: 330, category: "kuruyemis", image: "images/findik.jpg", description: "Lezzetli fındık.", weights: [1000, 750, 500, 250] },
-            { id: 6, name: "Tuzlu Çekirdek", price: 230, category: "kuruyemis", image: "images/tuzlu_çekirdek.jpg", description: "Tuzlu çekirdek.", weights: [1000, 750, 500, 250] },
-            { id: 7, name: "Tuzsuz Kabak Çekirdeği", price: 190, category: "kuruyemis", image: "images/tuzsuz_kabak.jpg", description: "Tuzsuz kabak çekirdeği.", weights: [1000, 750, 500, 250] },
-            { id: 8, name: "Karışık Kuruyemiş", price: 250, category: "kuruyemis", image: "images/karisik.jpg", description: "Karışık kuruyemiş.", weights: [1000, 750, 500, 250] },
-            { id: 9, name: "Kabuklu Ceviz", price: 50, category: "kuruyemis", image: "images/ceviz.jpg", description: "Kabuklu Ceviz.", weights: [1000, 750, 500, 250] },
-            { id: 10, name: "Maraş Sucuğu", price: 40, category: "sekerleme", image: "images/maraş-sucuğu.jpg", description: "Maraş Sucuğu.", weights: [1000, 750, 500, 250] },
-            { id: 11, name: "Tuzlu Badem", price: 25, category: "kuruyemis", image: "images/tuzlu-badem.jpg", description: "Tuzlu Badem.", weights: [1000, 750, 500, 250] },
-            { id: 12, name: "Çakıl Taşı", price: 80, category: "draje", image: "images/çakıl-tasi.jpg", description: "Çakıl Taşı Draje.", weights: [1000, 750, 500, 250] }
+            { id: 1, name: "Kaju", price: 150, category: "kuruyemis", image: "images/kaju.jpg", description: "Hafif ve lezzetli bir atıştırmalık, enerji dolu kaju fıstıkları.", weights: [250, 500, 750, 1000] },
+            { id: 2, name: "Soslu Fıstık", price: 120, category: "kuruyemis", image: "images/soslu_fistik.jpg", description: "Baharatlı sosuyla tatlandırılmış çıtır fıstıklar.", weights: [250, 500, 750, 1000] },
+            { id: 3, name: "Antep Fıstığı", price: 200, category: "kuruyemis", image: "images/fistik.jpg", description: "Doğal ve enfes lezzetiyle en iyi kalitede Antep fıstıkları.", weights: [250, 500, 750, 1000] },
+            { id: 4, name: "Soslu Mısır", price: 130, category: "kuruyemis", image: "images/soslu_misir.jpg", description: "Keyifli atıştırmalık için sosla harmanlanmış çıtır mısır.", weights: [250, 500, 750, 1000] },
+            { id: 5, name: "Fındık", price: 330, category: "kuruyemis", image: "images/findik.jpg", description: "Sağlıklı ve lezzetli kavrulmuş fındıklar.", weights: [250, 500, 750, 1000] },
+            { id: 6, name: "Tuzlu Çekirdek", price: 230, category: "kuruyemis", image: "images/tuzlu_çekirdek.jpg", description: "Çekirdek çitlemenin tuzlu ve klasik hali.", weights: [250, 500, 750, 1000] },
+            { id: 7, name: "Tuzsuz Kabak Çekirdeği", price: 190, category: "kuruyemis", image: "images/tuzsuz_kabak.jpg", description: "Doğallıktan ödün vermeyen, tuzsuz kabak çekirdeği.", weights: [250, 500, 750, 1000] },
+            { id: 8, name: "Karışık Kuruyemiş", price: 250, category: "kuruyemis", image: "images/karisik.jpg", description: "Farklı lezzetleri bir arada sunan karışık kuruyemiş.", weights: [250, 500, 750, 1000] },
+            { id: 9, name: "Kabuklu Ceviz", price: 50, category: "kuruyemis", image: "images/ceviz.jpg", description: "Doğal kabuğunda, sağlıklı ve taptaze cevizler.", weights: [250, 500, 750, 1000] },
+            { id: 10, name: "Kelebek Cevizli Pekmezli Sucuk", price: 40, category: "sekerleme", image: "images/maraş-sucuğu.jpg", description: "Geleneksel tatların vazgeçilmezi, Kelebek Cevizli Pekmezli Sucuk.", weights: [250, 500, 750, 1000] },
+            { id: 11, name: "Tuzlu Badem", price: 25, category: "kuruyemis", image: "images/tuzlu-badem.jpg", description: "Hafif tuzlu tadıyla çıtır badem keyfi.", weights: [250, 500, 750, 1000] },
+            { id: 12, name: "Çakıl Taşı", price: 80, category: "draje", image: "images/çakıl-tasi.jpg", description: "Tatlı severler için renkli ve eğlenceli drajeler.", weights: [250, 500, 750, 1000] },
+            { id: 13, name: "Siirt Fıstığı", price: 255, category: "kuruyemis", image: "images/siirt-fıstığı.jpg", description: "Özel aromasıyla Siirt’in meşhur fıstıkları.", weights: [250, 500, 750, 1000] },
+            { id: 14, name: "Çifte Kavrulmuş Tuzlu Yer Fıstığı", price: 25, category: "kuruyemis", image: "images/çifte-tuzlu-fıstık.jpg", description: "İki kez kavrulmuş, çıtır çıtır lezzet.", weights: [250, 500, 750, 1000] },
+            { id: 15, name: "Limon Kurusu", price: 225, category: "kurutulmus-meyve", image: "images/limon-kurusu.jpg", description: "Ferahlatıcı aromasıyla doğal limon kurusu.", weights: [250, 500, 750, 1000] },
+            { id: 16, name: "Ananas Kurusu", price: 215, category: "kurutulmus-meyve", image: "images/ananas-kurusu.jpg", description: "Tropikal bir tat arayanlara, tatlı ananas kurusu.", weights: [250, 500, 750, 1000] },
+            { id: 17, name: "Şeker Sucuğu", price: 415, category: "sekerleme", image: "images/seker-sucuğu.jpg", description: "Geleneksel tatlı sevenlere özel, şekerle kaplı lezzet.", weights: [250, 500, 750, 1000] },
+            { id: 18, name: "Antep Fıstıklı Yuvarlak Cezerye", price: 285, category: "sekerleme", image: "yuvarlak-fıstıklı-cezerye.jpg", description: "Antep fıstığı ve cezeryenin mükemmel uyumu.", weights: [250, 500, 750, 1000] },
+            { id: 19, name: "Fındıklı Cezerye", price: 515, category: "sekerleme", image: "images/fındıklı-cezerye.jpg", description: "Fındığın cezerye ile buluştuğu tatlı şölen.", weights: [250, 500, 750, 1000] },
+            { id: 20, name: "Antep Fıstıklı Cezerye", price: 265, category: "sekerleme", image: "images/antep-fıstıklı-cezerye.jpg", description: "Geleneksel cezerye, Antep fıstığının enfes aromasıyla.", weights: [250, 500, 750, 1000] },
+            { id: 21, name: "Antep Fıstıklı Nar Aromalı Fitil Lokum", price: 415, category: "sekerleme", image: "images/narlı-fitil.jpg", description: "Nar aromasıyla tatlandırılmış fıstıklı fitil lokum.", weights: [250, 500, 750, 1000] }
         ];
 
         // URL'den ID'yi al
         const urlParams = new URLSearchParams(window.location.search);
-        const productId = parseInt(urlParams.get('id'));
+        const productId = urlParams.get('id'); // id parametresi doğru alınıyor mu?
+        console.log("Product ID from URL:", productId); // Debug log
 
-        // Debugging: productId'yi konsola yazdıralım
-        console.log("Product ID:", productId);
-
-        // Eğer id parametresi yoksa ya da geçersizse, kullanıcıyı ana sayfaya yönlendir
         if (isNaN(productId)) {
             alert('Geçersiz ürün ID\'si!');
-            window.location.href = 'index.html';  // Ana sayfaya yönlendirme
+            window.location.href = 'index.html';  // Redirect to home page
         } else {
-            renderProductDetail(productId);
+            renderProductDetail(productId); // Call the function to render product details
         }
 
         // Ürün Detaylarını Göster
         function renderProductDetail(productId) {
-            const product = products.find(p => p.id === productId);
-
-            // Debugging: Ürün verisini konsola yazdıralım
-            console.log("Selected Product:", product);
-
+            const product = products.find(p => p.id === parseInt(productId));
+            console.log("Product found:", product); // Debug log
             if (product) {
                 const productDetailContainer = document.getElementById('product-detail-container');
-                let weightOptions = '';
-                // Gram seçeneklerini ekle
-                product.weights.forEach(weight => {
-                    weightOptions += `<option value="${weight}">${weight}g</option>`;
-                });
-
-                // Fiyat hesaplama
-                const pricePerKg = product.price; // 1000g fiyatı
-                const calculatePrice = (weight) => (pricePerKg / 1000) * weight;
-
                 productDetailContainer.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-            <h2>${product.name}</h2>
-            <p class="price" id="price-display">${pricePerKg} TL</p>
-            <p>${product.description}</p>
-            <label for="weight">Gram Seçeneği:</label>
-            <select id="weight">
-                ${weightOptions}
-            </select>
-            <button class="add-to-cart" data-id="${product.id}">Sepete Ekle</button>
-        `;
-
-                // Gramaj değiştikçe fiyatı güncelle
-                document.getElementById('weight').addEventListener('change', (event) => {
-                    const selectedWeight = parseInt(event.target.value);
-                    const updatedPrice = calculatePrice(selectedWeight);
-                    document.getElementById('price-display').innerText = `${updatedPrice.toFixed(2)} TL`;
-                });
+                    <img src="${product.image}" alt="${product.name}">
+                    <h2>${product.name}</h2>
+                    <p class="price" id="price-display">${product.price} TL</p>
+                    <p>${product.description}</p>
+                    <label for="weight">Gram Seçeneği:</label>
+                    <select id="weight">
+                        ${product.weights.map(weight => `<option value="${weight}">${weight}g</option>`).join('')}
+                    </select>
+                    <button class="add-to-cart" data-id="${product.id}">Sepete Ekle</button>
+                `;
             } else {
                 document.getElementById('product-detail-container').innerHTML = "<p>Ürün bulunamadı.</p>";
             }
         }
-
-
-
-        // Sepete ekleme işlemi
-        function addToCart(productId) {
-            const weight = document.getElementById('weight').value;
-            const product = products.find(p => p.id === parseInt(productId));
-            if (product) {
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                const existingProduct = cart.find(item => item.id === product.id && item.weight === parseInt(weight));
-                if (existingProduct) {
-                    existingProduct.quantity++;
-                } else {
-                    cart.push({ ...product, quantity: 1, weight: parseInt(weight) });
-                }
-                localStorage.setItem('cart', JSON.stringify(cart));
-                alert(`${product.name} (${weight}g) sepete eklendi!`);
-            }
-        }
-        // Sidebar menu toggle
-        const menuButton = document.getElementById('menu-btn');
-        const sidebar = document.getElementById('sidebar');
-        const closeBtn = document.querySelector('.close-btn');
-
-        // Sidebar toggle
-        function toggleSidebar() {
-            sidebar.classList.toggle('active');
-        }
-
-        // Open/close sidebar
-        if (menuButton) {
-            menuButton.addEventListener('click', toggleSidebar);
-        }
-
-        // Close sidebar on button click
-        if (closeBtn) {
-            closeBtn.addEventListener('click', toggleSidebar);
-        }
-
-        // Close sidebar when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) {
-                sidebar.classList.remove('active');
-            }
-        });
-
-        // Sayfa yüklendiğinde ürün detayını göster
-        document.addEventListener('DOMContentLoaded', () => {
-            renderProductDetail(productId);
-
-            document.getElementById('product-detail-container').addEventListener('click', (e) => {
-                if (e.target.classList.contains('add-to-cart')) {
-                    addToCart(e.target.dataset.id);
-                }
-            });
-        });
     </script>
 </body>
 

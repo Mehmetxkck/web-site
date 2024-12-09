@@ -154,6 +154,7 @@
                                 Klasik Lokumlar</a></li>
                     </ul>
                 <li><a href="products.html?category=draje">Draje</a></li>
+                <li><a href="products.html?category=kurutulmus-meyve">Kurutulmus Meyve</a></li>
             </ul>
             </li>
     </div>
@@ -170,6 +171,7 @@
                     <option value="sekerleme">Lokum & Şekerleme</option>
                     <option value="draje">Draje</option>
                 </select>
+
 
                 <!-- Fiyata Göre Sıralama -->
                 <label for="price-sort">Sırala:</label>
@@ -197,19 +199,29 @@
     <script>
         // Ürün verileri
         const products = [
-            { id: 1, name: "Kaju", price: 150, category: "kuruyemis", image: "images/kaju.jpg" },
-            { id: 2, name: "Soslu Fıstık", price: 120, category: "kuruyemis", image: "images/soslu_fistik.jpg" },
-            { id: 3, name: "Antep Fıstığı", price: 200, category: "kuruyemis", image: "images/fistik.jpg" },
-            { id: 4, name: "Soslu Mısır", price: 130, category: "kuruyemis", image: "images/soslu_misir.jpg" },
-            { id: 5, name: "Fındık", price: 330, category: "kuruyemis", image: "images/findik.jpg" },
-            { id: 6, name: "Tuzlu Çekirdek", price: 230, category: "kuruyemis", image: "images/tuzlu_çekirdek.jpg" },
-            { id: 7, name: "Tuzsuz Kabak Çekirdeği", price: 190, category: "kuruyemis", image: "images/tuzsuz_kabak.jpg" },
-            { id: 8, name: "Karışık Kuruyemiş", price: 250, category: "kuruyemis", image: "images/karisik.jpg" },
-            { id: 9, name: "Kabuklu Ceviz", price: 50, category: "kuruyemis", image: "images/ceviz.jpg" },
-            { id: 10, name: "Maraş Sucuğu", price: 40, category: "sekerleme", image: "images/maraş-sucuğu.jpg" },
-            { id: 11, name: "Tuzlu Badem", price: 25, category: "kuruyemis", image: "images/tuzlu-badem.jpg" },
-            { id: 12, name: "Çakıl Taşı", price: 80, category: "draje", image: "images/çakıl-tasi.jpg" }
+            { id: 1, name: "Kaju", price: 150, category: "kuruyemis", image: "images/kaju.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 2, name: "Soslu Fıstık", price: 120, category: "kuruyemis", image: "images/soslu_fistik.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 3, name: "Antep Fıstığı", price: 200, category: "kuruyemis", image: "images/fistik.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 4, name: "Soslu Mısır", price: 130, category: "kuruyemis", image: "images/soslu_misir.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 5, name: "Fındık", price: 330, category: "kuruyemis", image: "images/findik.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 6, name: "Tuzlu Çekirdek", price: 230, category: "kuruyemis", image: "images/tuzlu_çekirdek.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 7, name: "Tuzsuz Kabak Çekirdeği", price: 190, category: "kuruyemis", image: "images/tuzsuz_kabak.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 8, name: "Karışık Kuruyemiş", price: 250, category: "kuruyemis", image: "images/karisik.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 9, name: "Kabuklu Ceviz", price: 50, category: "kuruyemis", image: "images/ceviz.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 10, name: "Maraş Sucuğu", price: 40, category: "sekerleme", image: "images/maraş-sucuğu.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 11, name: "Tuzlu Badem", price: 25, category: "kuruyemis", image: "images/tuzlu-badem.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 12, name: "Çakıl Taşı", price: 80, category: "draje", image: "images/çakıl-tasi.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 13, name: "Siirt Fıstığı", price: 255, category: "kuruyemis", image: "images/siirt-fıstığı.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 14, name: "Çifte Kavrulmuş Tuzlu Yer Fıstığı", price: 25, category: "kuruyemis", image: "images/çifte-tuzlu-fıstık.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 15, name: "Limon Kurusu", price: 225, category: "kurutulmus-meyve", image: "images/limon-kurusu.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 16, name: "Ananas Kurusu", price: 215, category: "kurutulmus-meyve", image: "images/ananas-kurusu.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 17, name: "Şeker Sucuğu", price: 415, category: "sekerleme", image: "images/seker-sucuğu.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 18, name: "Antep Fıstıklı Yuvarlak Cezerye", price: 285, category: "sekerleme", image: "yuvarlak-fıstıklı-cezerye.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 19, name: "Fındıklı Cezerye", price: 515, category: "sekerleme", image: "images/fındıklı-cezerye.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 20, name: "Antep Fıstıklı Cezerye", price: 265, category: "sekerleme", image: "images/antep-fıstıklı-cezerye.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 21, name: "Antep Fıstıklı Nar Aromalı Fitil Lokum", price: 415, category: "sekerleme", image: "images/narlı-fitil.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] }
         ];
+
 
         // Sepet
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
