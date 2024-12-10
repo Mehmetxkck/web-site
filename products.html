@@ -225,6 +225,7 @@
 
         // Sepet
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
 
         // Ürünleri render et
         function renderProducts(filteredProducts) {
@@ -333,6 +334,24 @@
                 renderProducts(products); // Tüm ürünleri göster
             }
         }
+        // Function to handle search
+        function searchProducts() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchInput));
+
+            // Render the filtered products
+            renderProducts(filteredProducts);
+        }
+
+        // Event listener for the search button
+        document.getElementById('search-btn').addEventListener('click', searchProducts);
+
+        // Optional: Allow pressing "Enter" to trigger search
+        document.getElementById('search-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                searchProducts();
+            }
+        });
 
         // Sayfa yüklendiğinde kategoriye göre
         window.onload = filterProductsByCategory;
