@@ -96,6 +96,7 @@ const products = [
 
 let cart = [];
 
+
 // Render product card
 function renderProductCard(product) {
     return `
