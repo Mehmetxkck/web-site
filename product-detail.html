@@ -78,10 +78,7 @@
                 </a>
             </div>
 
-            <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Aradığınız ürün, kategori veya markayı yazınız.">
-                <button id="search-btn"><i class="fas fa-search"></i></button>
-            </div>
+            
 
             <div class="header-icons">
                 <a href="account.html" class="header-icon">
@@ -175,6 +172,8 @@
             { id: 21, name: "Antep Fıstıklı Nar Aromalı Fitil Lokum", price: 415, category: "sekerleme", image: "images/narlı-fitil.jpg", description: "Nar aromasıyla tatlandırılmış fıstıklı fitil lokum.", weights: [250, 500, 750, 1000] }
         ];
 
+        
+
         // URL'den ID'yi al
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id'); // id parametresi doğru alınıyor mu?
@@ -208,6 +207,7 @@
                 document.getElementById('product-detail-container').innerHTML = "<p>Ürün bulunamadı.</p>";
             }
         }
+        
     </script>
 </body>
 
