@@ -111,17 +111,6 @@
     </header>
 
 
-    <!-- Navigation (Menü) -->
-    <nav class="nav-bar">
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="products.html">Ürünler</a></li>
-            <li><a href="#contact">İletişim</a></li>
-            <li><a href="cart.html">Sepetim</a></li>
-        </ul>
-    </nav>
-
-
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
         <button class="close-btn">&times;</button>
@@ -130,33 +119,19 @@
         </div>
         <ul>
             <li><a href="products.html">Tüm Ürünler</a></li>
-            <ul class="subcategory">
+
                 <li>
                     <a href="products.html?category=kuruyemis">Kuruyemiş</a>
-                    <ul class="subcategory">
-                        <li><a href="products.html?category=kuruyemis&subcategory=cig">Çiğ
-                                Kuruyemiş</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=kavrulmis">Kavrulmuş
-                                Kuruyemiş</a></li>
-                    </ul>
                 </li>
                 <li><a href="products.html?category=sekerleme">Lokum & Şekerleme</a>
-                    <ul class="subcategory">
-                        <li><a href="products.html?category=kuruyemis&subcategory=cevizli-sucuklar">
-                                Cevizli Sucuklar</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=cezerye">
-                                Cezerye</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=hunkar-lokum">
-                                Hünkar Lokumlar</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=fitil&kus-lokumlar">
-                                Fitil&Kuş Lokumlar</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=klasik-lokumlar">
-                                Klasik Lokumlar</a></li>
-                    </ul>
                 <li><a href="products.html?category=draje">Draje</a></li>
-                <li><a href="products.html?category=kurutulmus-meyve">Kurutulmus Meyve</a></li>
+                <li><a href="products.html?category=kurutulmus-meyve">Kurutulmuş Meyveler</a></li>
             </ul>
             </li>
+
+            <!-- Diğer kategoriler -->
+        </ul>
+        </ul>
     </div>
 
     <section id="products">
@@ -219,7 +194,7 @@
             { id: 18, name: "Antep Fıstıklı Yuvarlak Cezerye", price: 285, category: "sekerleme", image: "yuvarlak-fıstıklı-cezerye.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
             { id: 19, name: "Fındıklı Cezerye", price: 515, category: "sekerleme", image: "images/fındıklı-cezerye.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
             { id: 20, name: "Antep Fıstıklı Cezerye", price: 265, category: "sekerleme", image: "images/antep-fıstıklı-cezerye.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
-            { id: 21, name: "Antep Fıstıklı Nar Aromalı Fitil Lokum", price: 415, category: "sekerleme", image: "images/narlı-fitil.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] }
+            { id: 21, name: "Antep Fıstıklı Nar Aromalı Fitil Lokum", price: 415, category: "sekerleme",image: "images/narlı-fitil.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] }
         ];
 
 
@@ -255,7 +230,8 @@
         function filterAndSortProducts() {
             const category = document.getElementById('category-filter').value;
             const sort = document.getElementById('price-sort').value;
-
+            const subcategory = urlParams.get('subcategory');
+            
             let filteredProducts = products.filter(product => category === "all" || product.category === category);
 
             if (sort === "asc") {
