@@ -65,6 +65,35 @@
             border: 1px solid #ddd;
             border-radius: 5px;
         }
+
+        /* Sidebar Başlangıçta Gizli */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 250px;
+            height: 100%;
+            background-color: #8a3c10;
+            color: white;
+            transition: left 0.3s ease;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        /* Sidebar Açıldığında */
+        .sidebar.open {
+            left: 0;
+            /* Sidebar açıldığında normal konumunda */
+        }
+
+        /* Sidebar Kapanma Butonu */
+        .close-btn {
+            font-size: 30px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -95,45 +124,37 @@
                     <span>Sepetim</span>
                 </a>
                 <!-- Menü Butonu -->
-                <div class="header-icon menu-btn" id="menu-btn">
+                <button class="header-icon menu-btn" id="menu-btn">
                     <i class="fas fa-bars"></i>
                     <span> Menü</span>
-                </div>
+                </button>
 
             </div>
         </div>
     </header>
 
 
-    <!-- Navigation (Menü) -->
-    <nav class="nav-bar">
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="products.html">Ürünler</a></li>
-            <li><a href="#contact">İletişim</a></li>
-            <li><a href="cart.html">Sepetim</a></li>
-        </ul>
-    </nav>
-
 
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
         <button class="close-btn">&times;</button>
+        <div class="sidebar-logo">
+            <h1 href="index.html"> Menü</h1>
+        </div>
         <ul>
-            <li><a href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=kuruyemis">Kuruyemiş</a>
-                <ul class="subcategory">
-                    <li><a
-                            href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=kuruyemis&subcategory=cig">Çiğ
-                            Kuruyemiş</a></li>
-                    <li><a
-                            href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=kuruyemis&subcategory=kavrulmis">Kavrulmuş
-                            Kuruyemiş</a></li>
-                </ul>
+            <li><a href="products.html">Tüm Ürünler</a></li>
+
+            <li>
+                <a href="products.html?category=kuruyemis">Kuruyemiş</a>
             </li>
-            <li><a href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=sekerleme">Lokum & Şekerleme</a>
-            </li>
-            <li><a href="file:///C:/Users/futbo/Desktop/erciyes/products.html?category=draje">Draje</a></li>
-            <!-- Diğer kategoriler -->
+            <li><a href="products.html?category=sekerleme">Lokum & Şekerleme</a>
+            <li><a href="products.html?category=draje">Draje</a></li>
+            <li><a href="products.html?category=kurutulmus-meyve">Kurutulmuş Meyveler</a></li>
+        </ul>
+        </li>
+
+        <!-- Diğer kategoriler -->
+        </ul>
         </ul>
     </div>
 
@@ -155,18 +176,27 @@
     <script>
         // Ürün verileri
         const products = [
-            { id: 1, name: "Kaju", price: 150, category: "kuruyemis", image: "images/kaju.jpg", description: "Lezzetli kaju fıstığı.", weights: [1000, 750, 500, 250] },
-            { id: 2, name: "Soslu Fıstık", price: 120, category: "kuruyemis", image: "images/soslu_fistik.jpg", description: "Özel soslu fıstık.", weights: [1000, 750, 500, 250] },
-            { id: 3, name: "Fıstık", price: 200, category: "kuruyemis", image: "images/fistik.jpg", description: "Taze fıstık.", weights: [1000, 750, 500, 250] },
-            { id: 4, name: "Soslu Mısır", price: 130, category: "kuruyemis", image: "images/soslu_misir.jpg", description: "Lezzetli soslu mısır.", weights: [1000, 750, 500, 250] },
-            { id: 5, name: "Fındık", price: 330, category: "kuruyemis", image: "images/findik.jpg", description: "Lezzetli fındık.", weights: [1000, 750, 500, 250] },
-            { id: 6, name: "Tuzlu Çekirdek", price: 230, category: "kuruyemis", image: "images/tuzlu_çekirdek.jpg", description: "Tuzlu çekirdek.", weights: [1000, 750, 500, 250] },
-            { id: 7, name: "Tuzsuz Kabak Çekirdeği", price: 190, category: "kuruyemis", image: "images/tuzsuz_kabak.jpg", description: "Tuzsuz kabak çekirdeği.", weights: [1000, 750, 500, 250] },
-            { id: 8, name: "Karışık Kuruyemiş", price: 250, category: "kuruyemis", image: "images/karisik.jpg", description: "Karışık kuruyemiş.", weights: [1000, 750, 500, 250] },
-            { id: 9, name: "Kabuklu Ceviz", price: 50, category: "kuruyemis", image: "images/ceviz.jpg", description: "Kabuklu Ceviz.", weights: [1000, 750, 500, 250] },
-            { id: 10, name: "Maraş Sucuğu", price: 40, category: "sekerleme", image: "images/maraş-sucuğu.jpg", description: "Maraş Sucuğu.", weights: [1000, 750, 500, 250] },
-            { id: 11, name: "Tuzlu Badem", price: 25, category: "kuruyemis", image: "images/tuzlu-badem.jpg", description: "Tuzlu Badem.", weights: [1000, 750, 500, 250] },
-            { id: 12, name: "Çakıl Taşı", price: 80, category: "draje", image: "images/çakıl-tasi.jpg", description: "Çakıl Taşı Draje.", weights: [1000, 750, 500, 250] }
+            { id: 1, name: "Kaju", price: 150, category: "kuruyemis", image: "images/kaju.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 2, name: "Soslu Fıstık", price: 120, category: "kuruyemis", image: "images/soslu_fistik.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 3, name: "Antep Fıstığı", price: 200, category: "kuruyemis", image: "images/fistik.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 4, name: "Soslu Mısır", price: 130, category: "kuruyemis", image: "images/soslu_misir.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 5, name: "Fındık", price: 330, category: "kuruyemis", image: "images/findik.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 6, name: "Tuzlu Çekirdek", price: 230, category: "kuruyemis", image: "images/tuzlu_çekirdek.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 7, name: "Tuzsuz Kabak Çekirdeği", price: 190, category: "kuruyemis", image: "images/tuzsuz_kabak.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 8, name: "Karışık Kuruyemiş", price: 250, category: "kuruyemis", image: "images/karisik.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 9, name: "Kabuklu Ceviz", price: 50, category: "kuruyemis", image: "images/ceviz.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 10, name: "Maraş Sucuğu", price: 40, category: "sekerleme", image: "images/maraş-sucuğu.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 11, name: "Tuzlu Badem", price: 25, category: "kuruyemis", image: "images/tuzlu-badem.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 12, name: "Çakıl Taşı", price: 80, category: "draje", image: "images/çakıl-tasi.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 13, name: "Siirt Fıstığı", price: 255, category: "kuruyemis", image: "images/siirt-fıstığı.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 14, name: "Çifte Kavrulmuş Tuzlu Yer Fıstığı", price: 25, category: "kuruyemis", image: "images/çifte-tuzlu-fıstık.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 15, name: "Limon Kurusu", price: 225, category: "kurutulmus-meyve", image: "images/limon-kurusu.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 16, name: "Ananas Kurusu", price: 215, category: "kurutulmus-meyve", image: "images/ananas-kurusu.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 17, name: "Şeker Sucuğu", price: 415, category: "sekerleme", image: "images/seker-sucuğu.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 18, name: "Antep Fıstıklı Yuvarlak Cezerye", price: 285, category: "sekerleme", image: "yuvarlak-fıstıklı-cezerye.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 19, name: "Fındıklı Cezerye", price: 515, category: "sekerleme", image: "images/fındıklı-cezerye.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 20, name: "Antep Fıstıklı Cezerye", price: 265, category: "sekerleme", image: "images/antep-fıstıklı-cezerye.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] },
+            { id: 21, name: "Antep Fıstıklı Nar Aromalı Fitil Lokum", price: 415, category: "sekerleme", image: "images/narlı-fitil.jpg", description: "Lezzetli kaju fıstığı.", weights: [250, 500, 750, 1000] }
         ];
 
         // URL'den ID'yi al
@@ -226,7 +256,17 @@
             }
         }
 
+        // Menü butonuna tıklama olayını yönet
+        document.getElementById('menu-btn').addEventListener('click', function () {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');  // Sidebar'ı açma veya kapama
+        });
 
+        // Sidebar kapama butonuna tıklama olayını yönet
+        document.querySelector('.close-btn').addEventListener('click', function () {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('open');  // Sidebar'ı kapatma
+        });
 
         // Sepete ekleme işlemi
         function addToCart(productId) {
