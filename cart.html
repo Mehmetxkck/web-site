@@ -20,7 +20,7 @@
                 </a>
             </div>
 
-            
+
 
             <div class="header-icons">
                 <a href="account.html" class="header-icon">
@@ -59,33 +59,20 @@
         </div>
         <ul>
             <li><a href="products.html">Tüm Ürünler</a></li>
-            <ul class="subcategory">
+
                 <li>
                     <a href="products.html?category=kuruyemis">Kuruyemiş</a>
-                    <ul class="subcategory">
-                        <li><a href="products.html?category=kuruyemis&subcategory=cig">Çiğ
-                                Kuruyemiş</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=kavrulmis">Kavrulmuş
-                                Kuruyemiş</a></li>
-                    </ul>
                 </li>
                 <li><a href="products.html?category=sekerleme">Lokum & Şekerleme</a>
-                    <ul class="subcategory">
-                        <li><a href="products.html?category=kuruyemis&subcategory=cevizli-sucuklar">
-                                Cevizli Sucuklar</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=cezerye">
-                                Cezerye</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=hunkar-lokum">
-                                Hünkar Lokumlar</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=fitil&kus-lokumlar">
-                                Fitil&Kuş Lokumlar</a></li>
-                        <li><a href="products.html?category=kuruyemis&subcategory=klasik-lokumlar">
-                                Klasik Lokumlar</a></li>
-                    </ul>
                 <li><a href="products.html?category=draje">Draje</a></li>
+                <li><a href="products.html?category=kurutulmus-meyve">Kurutulmuş Meyveler</a></li>
             </ul>
             </li>
-        </div>
+
+            <!-- Diğer kategoriler -->
+        </ul>
+        </ul>
+    </div>
 
     <!-- Sepet -->
     <section id="cart">
@@ -253,6 +240,43 @@
             } else if (event.target.classList.contains('decrease-btn')) {
                 decreaseQuantity(index);
             }
+        });
+        // WhatsApp numarası (uluslararası formatta)
+        const whatsappNumber = '905412457973'; // Burada istediğiniz WhatsApp numarasını girin
+
+        // Sepet bilgilerini alıp mesaj oluşturma fonksiyonu
+        function generateCartMessage() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let productDetails = [];
+            let total = 0;
+
+            if (cart.length === 0) {
+                return 'Sepetiniz boş. Sipariş vermek istiyorum';
+            }
+
+            // Ürünleri, gram bilgilerini ve toplam tutarı hesapla
+            cart.forEach(item => {
+                productDetails.push(`${item.name} (${item.weight} gr)`);
+                total += item.price * item.quantity;
+            });
+
+            // Kargo ücreti hesaplama
+            const shippingCost = total < 750 ? 90 : 0;
+            const finalTotal = total + shippingCost;
+
+            // Mesajı oluştur
+            const message = `Sepetimdeki ürünler: ${productDetails.join(', ')}\nSepet Tutarım: ${total.toFixed(2)} TL\nKargo Ücreti: ${shippingCost} TL\nToplam Tutarım: ${finalTotal.toFixed(2)} TL\nSipariş vermek istiyorum`;
+
+            return message;
+        }
+
+        // Ödemeye Git butonuna tıklama olayı
+        document.getElementById('checkout-btn').addEventListener('click', function () {
+            const message = generateCartMessage();
+            const encodedMessage = encodeURIComponent(message);  // Mesajı encode et
+
+            // Kullanıcıyı WhatsApp'a yönlendir
+            window.location.href = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
         });
 
     </script>
