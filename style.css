@@ -121,6 +121,7 @@ a:hover {
     /* Metni yatayda ortalar */
     margin-bottom: 30px;
     /* Metin ile kategoriler arasında boşluk bırakıyoruz */
+    
 }
 
 .sidebar-logo h1 {
@@ -134,6 +135,7 @@ a:hover {
     /* Başlık altındaki boşluğu kaldırıyoruz */
     padding: 0;
     /* Başlık etrafındaki ekstra boşluğu kaldırıyoruz */
+    
 }
 
 .sidebar-logo p {
@@ -143,6 +145,7 @@ a:hover {
     /* Alt metin rengini belirliyoruz */
     margin: 5px 0 0;
     /* Alt metin ile başlık arasında biraz boşluk bırakıyoruz */
+    
 }
 
 .sidebar.active {
@@ -170,10 +173,12 @@ a:hover {
     font-size: 17;
     list-style: none;
     padding: 0;
+    /* Alt çizgi */
 }
 
 .sidebar ul li {
     margin: 15px 0;
+    border-bottom: 2px solid white;
 }
 
 /* Alt kategorilerin sağa kaydırılması */
@@ -181,6 +186,7 @@ a:hover {
     list-style-type: none;
     padding-left: 20px;
     /* Alt kategorileri biraz sağa kaydır */
+    border-bottom: 2px solid white;
 }
 
 .sidebar ul .subcategory li {
@@ -872,8 +878,8 @@ h2 {
 }
 
 .cart-item .item-info img {
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
 }
