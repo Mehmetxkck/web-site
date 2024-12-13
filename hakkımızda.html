@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Erciyes Kuruyemiş - Lezzetli ve sağlıklı kuruyemişler">
+    <title>Has Erciyes Kuruyemiş</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: white;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #8a3c10;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Erciyes Kuruyemiş">
+                </a>
+            </div>
+
+
+
+            <div class="header-icons">
+                <a href="account.html" class="header-icon">
+                    <i class="fas fa-user"></i>
+                    <span>Hesabım</span>
+                </a>
+                <a href="cart.html" class="header-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Sepetim</span>
+                </a>
+                <div class="header-icon menu-btn" id="menu-btn">
+                    <i class="fas fa-bars"></i>
+                    <span> Menü</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-logo">
+            <h1 href="index.html"> Menü</h1>
+        </div>
+        <ul>
+            <li><a href="products.html">Tüm Ürünler</a></li>
+
+            <li>
+                <a href="products.html?category=kuruyemis">Kuruyemiş</a>
+            </li>
+            <li><a href="products.html?category=sekerleme">Lokum & Şekerleme</a>
+            <li><a href="products.html?category=draje">Draje</a></li>
+            <li><a href="products.html?category=kurutulmus-meyve">Kurutulmuş Meyveler</a></li>
+        </ul>
+        </li>
+
+        <!-- Diğer kategoriler -->
+        </ul>
+        </ul>
+    </div>
+    <div class="container">
+        <h2>Hakkımızda</h2>
+        <p>1969 yılında kurulan Has Erciyes Kuruyemiş, Kaliteli ve taze kuruyemişlerini sunarak sektöründe kendine
+            sağlam bir yer edinmiştir.
+            Yarım yüzyılı aşkın süredir, müşteri memnuniyetini her zaman ön planda tutarak, taze ve hijyenik
+            kuruyemişleri, geleneksel lezzetlerle modern bir bakış açısıyla harmanlıyoruz. Ürünlerimiz, titizlikle
+            seçilir ve her zaman en yüksek kalite standartlarına göre hazırlanır.
+            Kuruluşumuzdan bugüne, geniş ürün yelpazemizle, günlük ihtiyaçlarınızdan özel günlerinize kadar her anınıza
+            eşlik edecek sağlıklı ve lezzetli seçenekler sunmaktayız. Kuruyemişler, lokum çeşitleri ve diğer
+            ürünlerimiz, hem lezzetli hem de besleyici seçenekler arayan herkes için idealdir.
+            Has Erciyes Kuruyemiş, doğallığı, tazeliği ve müşteri odaklı yaklaşımı ile kuruyemiş sektöründe devam
+            etmektedir. Bizim için en değerli şey, müşterilerimizin memnuniyetidir. Bu anlayışla, yenilikçi ürünlerle
+            sektöre öncülük etmeyi ve güvenilir bir marka olmayı sürdürüyoruz.</p>
+    </div>
+
+    <footer style="background-color: #8a3c10; color: #fff; padding: 40px 0; font-family: Arial, sans-serif;">
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center;">
+            <div>
+                <img src="images/safe.png" alt="Güvenli Alışveriş" style="width: 40px;">
+                <p>Güvenli Alışveriş</p>
+            </div>
+            <div>
+                <img src="images/fresh-products-icon.png" alt="Taptaze Ürünler" style="width: 40px;">
+                <p>Taptaze Ürünler</p>
+            </div>
+            <div>
+                <img src="images/fast-delivery-icon.png" alt="Hızlı Kargo" style="width: 60px;">
+                <p>Hızlı Kargo</p>
+            </div>
+        </div>
+        <hr style="border-color: #b7551d;">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 20px;">
+            <div style="flex: 1; min-width: 250px; margin: 10px;">
+                <h4>Kurumsal</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px; margin: 10px;">
+                <h4>Destek</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="hakkımızda.html" style="color: #fff; text-decoration: none;">Hakkımızda</a></li><br>
+                    <li><a href="#" style="color: #fff; text-decoration: none;">Havale Bilgilerimiz</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px; margin: 10px;">
+                <h4>Müşteri Hizmetleri</h4>
+                <p><strong>Müşteri Hizmetleri:</strong> 0 539 787 73 01</p>
+                <p>Adres: Güzelyalı, Turgut Özal Blv. 10 D, 01170 Çukurova/Adana</p>
+                <p>E-Posta: <a href="mailto:haserciyesshop.gmail.com"
+                        style="color: #fff; text-decoration: none;">haserciyesshop.gmail.com</a></p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="https://www.facebook.com/haserciyeskuruyemis/" style="color: #fff; margin: 0 10px;"><img src="images/facebook-icon.png" alt="Facebook"
+                    style="width: 40px;"></a>
+            <a href="https://www.instagram.com/haserciyes.kuruyemis/" style="color: #fff; margin: 0 10px;"><img src="images/instagram-icon.png" alt="Instagram"
+                    style="width: 40px;"></a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

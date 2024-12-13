@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Erciyes Kuruyemiş - Lezzetli ve sağlıklı kuruyemişler">
+    <title>Has Erciyes Kuruyemiş</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>İletişim</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: white;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .contact-info div {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #8a3c10;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Erciyes Kuruyemiş">
+                </a>
+            </div>
+
+
+
+            <div class="header-icons">
+                <a href="account.html" class="header-icon">
+                    <i class="fas fa-user"></i>
+                    <span>Hesabım</span>
+                </a>
+                <a href="cart.html" class="header-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Sepetim</span>
+                </a>
+                <div class="header-icon menu-btn" id="menu-btn">
+                    <i class="fas fa-bars"></i>
+                    <span> Menü</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-logo">
+            <h1 href="index.html"> Menü</h1>
+        </div>
+        <ul>
+            <li><a href="products.html">Tüm Ürünler</a></li>
+
+            <li>
+                <a href="products.html?category=kuruyemis">Kuruyemiş</a>
+            </li>
+            <li><a href="products.html?category=sekerleme">Lokum & Şekerleme</a>
+            <li><a href="products.html?category=draje">Draje</a></li>
+            <li><a href="products.html?category=kurutulmus-meyve">Kurutulmuş Meyveler</a></li>
+        </ul>
+        </li>
+
+        <!-- Diğer kategoriler -->
+        </ul>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="contact-info">
+            <div>
+                <h2>Adres</h2>
+                <p>Adres: Güzelyalı, Turgut Özal Blv. 10 D, 01170<br>Çukurova / ADANA</p>
+            </div>
+            <div>
+                <h2>Telefon</h2>
+                <p>0 539 787 73 01</p>
+            </div>
+            <div>
+                <h2>E-Posta</h2>
+                <p><a href="mailto:haserciyesshop.gmail.com">haserciyesshop.gmail.com</a></p>
+            </div>
+        </div>
+
+        <h2>Lokasyonumuz</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4747.157704669201!2d35.29485970304804!3d37.01323176321944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c39c3cae1c26a3%3A0x5420b1159bc2b288!2s28P7%2B4P%20%C3%87ukurova%2C%20Adana!5e0!3m2!1str!2str!4v1639987677246!5m2!1str!2str"
+            allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+
+    <footer style="background-color: #8a3c10; color: #fff; padding: 40px 0; font-family: Arial, sans-serif;">
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center;">
+            <div>
+                <img src="images/safe.png" alt="Güvenli Alışveriş" style="width: 40px;">
+                <p>Güvenli Alışveriş</p>
+            </div>
+            <div>
+                <img src="images/fresh-products-icon.png" alt="Taptaze Ürünler" style="width: 40px;">
+                <p>Taptaze Ürünler</p>
+            </div>
+            <div>
+                <img src="images/fast-delivery-icon.png" alt="Hızlı Kargo" style="width: 60px;">
+                <p>Hızlı Kargo</p>
+            </div>
+        </div>
+        <hr style="border-color: #b7551d;">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 20px;">
+            <div style="flex: 1; min-width: 250px; margin: 10px;">
+                <h4>Kurumsal</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px; margin: 10px;">
+                <h4>Destek</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="hakkımızda.html" style="color: #fff; text-decoration: none;">Hakkımızda</a></li><br>
+                    <li><a href="#" style="color: #fff; text-decoration: none;">Havale Bilgilerimiz</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px; margin: 10px;">
+                <h4>Müşteri Hizmetleri</h4>
+                <p><strong>Müşteri Hizmetleri:</strong> 0 539 787 73 01</p>
+                <p>Adres: Güzelyalı, Turgut Özal Blv. 10 D, 01170 Çukurova/Adana</p>
+                <p>E-Posta: <a href="mailto:haserciyesshop.gmail.com"
+                        style="color: #fff; text-decoration: none;">haserciyesshop.gmail.com</a></p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="https://www.facebook.com/haserciyeskuruyemis/" style="color: #fff; margin: 0 10px;"><img src="images/facebook-icon.png" alt="Facebook"
+                    style="width: 40px;"></a>
+            <a href="https://www.instagram.com/haserciyes.kuruyemis/" style="color: #fff; margin: 0 10px;"><img src="images/instagram-icon.png" alt="Instagram"
+                    style="width: 40px;"></a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
