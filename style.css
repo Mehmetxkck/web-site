@@ -301,10 +301,6 @@ a:hover {
         /* Yatay boşluk */
     }
 
-    .menu-btn span {
-        display: none;
-        /* Menü yazısını gizle */
-    }
 
     .search-bar {
         margin-top: 10px;
