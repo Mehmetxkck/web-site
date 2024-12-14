@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Erciyes Kuruyemiş - Lezzetli ve sağlıklı kuruyemişler">
     <title>Has Erciyes Kuruyemiş</title>
+    <link rel="icon" type="image/png" href="images/ico.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -25,10 +26,7 @@
 
 
             <div class="header-icons">
-                <a href="account.html" class="header-icon">
-                    <i class="fas fa-user"></i>
-                    <span>Hesabım</span>
-                </a>
+
                 <a href="cart.html" class="header-icon">
                     <i class="fas fa-shopping-cart"></i>
                     <span>Sepetim</span>
@@ -65,6 +63,7 @@
                 <a href="products.html?category=kuruyemis">Kuruyemiş</a>
             </li>
             <li><a href="products.html?category=sekerleme">Lokum & Şekerleme</a>
+            <li><a href="products.html?category=kahve">Türk Kahvesi</a>
             <li><a href="products.html?category=draje">Draje</a></li>
             <li><a href="products.html?category=kurutulmus-meyve">Kurutulmuş Meyveler</a></li>
         </ul>
@@ -79,9 +78,11 @@
     <section class="hero">
         <div class="slider">
             <div class="slides">
-                <img src="images/slider1.png" class="slide active" alt="Slider 1">
-                <img src="images/slider2.png" class="slide" alt="Slider 2">
-                <img src="images/slider3.png" class="slide" alt="Slider 3">
+                <img src="images/2.png" class="slide active" alt="Slider 1">
+                <img src="images/4.png" class="slide" alt="Slider 2">
+                <img src="images/1.png" class="slide" alt="Slider 3">
+                <img src="images/3.png" class="slide" alt="Slider 4">
+                <img src="images/5.png" class="slide" alt="Slider 5">
             </div>
             <div class="dots">
                 <span class="dot" data-index="0"></span>
@@ -92,7 +93,17 @@
         </div>
     </section>
 
-
+    <!-- Campaign Section -->
+    <section id="campaigns" class="campaigns">
+        <div class="container">
+            <h2>Kampanyalar</h2>
+            <div class="campaign-banner">
+                <h3>Yılbaşına Özel %10 İndirim Kuponu: "YILBAŞI"</h3>
+                <h4>Yılbaşı Lezzet Dolu, Fiyatlar Bütçe Dostu!</h4>
+                <a href="products.html" class="btn">Hemen İncele</a>
+            </div>
+        </div>
+    </section>
     <!-- Öne Çıkan Ürünler -->
     <section class="featured-products">
         <div class="container">
@@ -139,17 +150,17 @@
                     <p>Fiyat: 99.99 TL</p>
                     <a href="product-detail.html?id=16" class="btn">Ürüne Git</a>
                 </div>
-                <div class="product-card">
-                    <img src="images/maraş-sucuğu.jpg" alt="Maraş Sucuğu">
-                    <h3>Maraş Sucuğu</h3>
-                    <p>Fiyat: 149.99 TL</p>
-                    <a href="product-detail.html?id=10" class="btn">Ürüne Git</a>
-                </div>
                 <div class=" product-card">
                     <img src="images/fındıklı-cezerye.jpg" alt="Fındıklı Cezerye">
                     <h3>Fındıklı Cezerye</h3>
                     <p>Fiyat: 199.99 TL</p>
                     <a href="product-detail.html?id=19" class="btn">Ürüne Git</a>
+                </div>
+                <div class="product-card">
+                    <img src="images/maraş-sucuğu.jpg" alt="Maraş Sucuğu">
+                    <h3>Maraş Sucuğu</h3>
+                    <p>Fiyat: 149.99 TL</p>
+                    <a href="product-detail.html?id=10" class="btn">Ürüne Git</a>
                 </div>
                 <div class="product-card">
                     <img src="images/yuvarlak-fiscezerye.jpg" alt="Antep Fıstıklı Yuvarlak Cezerye">
@@ -162,17 +173,6 @@
         </div>
     </section>
 
-    <!-- Campaign Section -->
-    <section id="campaigns" class="campaigns">
-        <div class="container">
-            <h2>Kampanyalar</h2>
-            <div class="campaign-banner">
-                <h3>Yılbaşına Özel %10 İndirim Kuponu: "YILBAŞI"</h3>
-                <h4>Yılbaşı Lezzet Dolu, Fiyatlar Bütçe Dostu!</h4>
-                <a href="products.html" class="btn">Hemen İncele</a>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer style="background-color: #8a3c10; color: #fff; padding: 40px 0; font-family: Arial, sans-serif;">
@@ -202,7 +202,7 @@
                 <h4>Destek</h4>
                 <ul style="list-style: none; padding: 0;">
                     <li><a href="hakkımızda.html" style="color: #fff; text-decoration: none;">Hakkımızda</a></li><br>
-                    <li><a href="#" style="color: #fff; text-decoration: none;">Havale Bilgilerimiz</a></li>
+                    <li><a href="havale.html" style="color: #fff; text-decoration: none;">Havale Bilgilerimiz</a></li>
                 </ul>
             </div>
             <div style="flex: 1; min-width: 250px; margin: 10px;">
@@ -214,10 +214,10 @@
             </div>
         </div>
         <div style="text-align: center; margin-top: 20px;">
-            <a href="https://www.facebook.com/haserciyeskuruyemis/" style="color: #fff; margin: 0 10px;"><img src="images/facebook-icon.png" alt="Facebook"
-                    style="width: 40px;"></a>
-            <a href="https://www.instagram.com/haserciyes.kuruyemis/" style="color: #fff; margin: 0 10px;"><img src="images/instagram-icon.png" alt="Instagram"
-                    style="width: 40px;"></a>
+            <a href="https://www.facebook.com/haserciyeskuruyemis/" style="color: #fff; margin: 0 10px;"><img
+                    src="images/facebook-icon.png" alt="Facebook" style="width: 40px;"></a>
+            <a href="https://www.instagram.com/haserciyes.kuruyemis/" style="color: #fff; margin: 0 10px;"><img
+                    src="images/instagram-icon.png" alt="Instagram" style="width: 40px;"></a>
         </div>
     </footer>
 
